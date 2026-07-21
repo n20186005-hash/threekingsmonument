@@ -1,0 +1,9 @@
+---
+import LegalDoc from '../../components/LegalDoc.astro';
+import { languagesList } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return languagesList.map((lang) => ({ params: { lang } }));
+}
+---
+<LegalDoc type="cookies" />

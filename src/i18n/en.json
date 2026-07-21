@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "title": "Three Kings Monument Chiang Mai — Visitor Guide, History & Legend",
+    "description": "A complete guide to the Three Kings Monument (Anusawari Sam Kasat) in Chiang Mai Old City: the founding of Chiang Mai by Kings Mengrai, Ramkhamhaeng and Ngam Muang, plus visiting info, photos and reviews."
+  },
+  "common": {
+    "siteName": "Three Kings Monument",
+    "changeLanguage": "Change language",
+    "toggleTheme": "Toggle theme",
+    "viewOnMaps": "View on Google Maps"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "history": "History",
+    "guide": "Guide",
+    "food": "Amenities",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "map": "Map"
+  },
+  "hero": {
+    "eyebrow": "— 01 · Heritage of Lanna —",
+    "titleMain": "Three Kings Monument",
+    "titleAccent": "Three Kings",
+    "subtitle": "A bronze monument honouring the three great kings — Mengrai, Ramkhamhaeng and Ngam Muang — who founded the city of Chiang Mai in 1296.",
+    "cta1": "Start your visit",
+    "cta2": "Explore the area →",
+    "rating": "4.3",
+    "reviewCount": "8,964",
+    "liveWeather": "Live weather",
+    "liveSunset": "Sunset",
+    "loading": "Loading live data from the exact location…",
+    "weatherError": "Live weather data is unavailable right now",
+    "plannerEyebrow": "— Light of the day —",
+    "plannerTitle": "Sunset & Blue Hour",
+    "plannerNote": "Calculated from the monument's real coordinates so you can plan photos and avoid harsh midday sun.",
+    "goldenHourLabel": "Golden Hour",
+    "crowdWarningLabel": "Crowd warning",
+    "crowdAfter": "Evenings & Sundays",
+    "arriveLabel": "Best time to arrive",
+    "blueHourLabel": "Blue Hour",
+    "lightCaption": "Soft evening light is perfect for photographing the monument and the open square.",
+    "viewLocation": "View on Google Maps ↗"
+  },
+  "about": {
+    "label": "— 02 · About the monument —",
+    "heading": "About the Three Kings Monument",
+    "lead": "A landmark at the heart of Chiang Mai Old City, honouring a great friendship and alliance in Lanna history.",
+    "paragraph1": "The Three Kings Monument stands in an open square in front of the Chiang Mai City Arts & Cultural Centre (the former provincial hall), inside the old city walls. It marks the starting point of the famous Sunday Walking Street and is a must-see for every visitor.",
+    "paragraph2": "The three bronze statues depict King Mengrai, the founder of Chiang Mai; King Ramkhamhaeng the Great of Sukhothai; and King Ngam Muang of Phayao. According to legend, the three were close friends and allies who together founded Chiang Mai in 1296.",
+    "quote": "The three kings who founded Chiang Mai remind us of friendship, unity and the wisdom of good governance.",
+    "quoteAuthor": "— on the monument",
+    "stats": [
+      { "value": "24 hrs", "label": "Open around the clock" },
+      { "value": "1296", "label": "Year Chiang Mai was founded" },
+      { "value": "3 kings", "label": "Figures in the monument" }
+    ],
+    "highlights": [
+      { "tag": "01", "title": "Bronze sculpture", "desc": "Beautifully cast bronze statues of the three kings" },
+      { "tag": "02", "title": "Open city square", "desc": "A public square to relax and gather" },
+      { "tag": "03", "title": "Next to the Cultural Centre", "desc": "Adjacent to the Chiang Mai City Arts & Cultural Centre" }
+    ],
+    "editorTip": {
+      "tag": "Editor's tip",
+      "text": "Come at dawn or in the evening for the best light and to avoid the crowds.",
+      "ctaLabel": "See the guide"
+    }
+  },
+  "history": {
+    "label": "— 03 · History & legend —",
+    "heading": "The history and legend of the Three Kings",
+    "intro": "In 1296, King Mengrai chose this site together with King Ramkhamhaeng and King Ngam Muang to found 'Nopburi Si Nakhon Ping Chiang Mai'. The monument honours not only three great kings but also the friendship and alliance that bound the kingdoms of Lanna, Sukhothai and Phayao.",
+    "blocks": [
+      { "title": "The founding of Chiang Mai", "text": "King Mengrai moved his capital from Wiang Kum Kam and founded Chiang Mai as the new capital of Lanna, advised by Ramkhamhaeng and Ngam Muang on the strategic location." },
+      { "title": "An alliance of three kingdoms", "text": "Lanna, Sukhothai and Phayao were friends and allies, supporting one another in diplomacy and defence. This relationship became the foundation of regional stability." },
+      { "title": "A living heritage", "text": "Chiang Mai flourished as the centre of Lanna and remains so today; the Three Kings Monument has become the city's central symbol." }
+    ],
+    "legend": {
+      "title": "The legend of friendship",
+      "text": "It is told that the three kings were genuine close friends who consulted one another on all important matters, and it was this bond that led to the founding of Chiang Mai."
+    },
+    "didYouKnow": {
+      "title": "Did you know?",
+      "text": "The current bronze statues were cast in 1984, replacing the original cement statues built in 1973–74."
+    },
+    "kingsTitle": "The three great kings",
+    "kings": [
+      { "name": "King Mengrai", "period": "Kingdom of Lanna (r. 1238–1317)", "desc": "Founder of Chiang Mai and the Lanna Kingdom", "storyTitle": "[Founding Chiang Mai]", "story": "King Mengrai founded the Lanna Kingdom and, with his two friends, chose this site to establish Chiang Mai as his capital, recognising it as a strategic and resource-rich location." },
+      { "name": "King Ramkhamhaeng the Great", "period": "Kingdom of Sukhothai (r. 1279–1298)", "desc": "Inventor of the Thai script and father of Sukhothai", "storyTitle": "[The Thai script]", "story": "King Ramkhamhaeng is credited with inventing the Thai script and promoting Buddhism. As a friend of Mengrai, he offered key advice in founding Chiang Mai." },
+      { "name": "King Ngam Muang", "period": "Kingdom of Phayao (r. 1270–1315)", "desc": "King who ruled Phayao prosperously", "storyTitle": "[Friendship of three kings]", "story": "King Ngam Muang of Phayao was one of the three kings who founded Chiang Mai. Legend says the three were bound by a strong friendship and aided each other in times of war and hardship." }
+    ],
+    "artistry": {
+      "label": "— 03.5 · Art & sculpture —",
+      "heading": "The beauty of the bronze sculpture",
+      "intro": "The Three Kings Monument blends historical narrative with the craftsmanship of northern Thai bronze casters.",
+      "items": [
+        { "title": "Bronze casting", "desc": "The statues are cast in bronze by skilled artisans; the patinated surface is both beautiful and durable." },
+        { "title": "Detail and proportion", "desc": "Each king's face and attire are finely modelled, conveying the character of every ruler." },
+        { "title": "Setting in an open square", "desc": "The monument stands in a spacious open square, ideal to view and photograph from many angles." }
+      ]
+    }
+  },
+  "guide": {
+    "label": "— 04 · Visitor guide —",
+    "heading": "Visitor guide to the Three Kings Monument",
+    "lead": "Key information to plan your visit to the monument in Chiang Mai Old City.",
+    "etiquette": {
+      "tag": "⚠️ Etiquette & dress",
+      "text": "Although it is a public space, as a historical monument please dress modestly, avoid inappropriate behaviour, and stay respectful while photographing."
+    },
+    "audioGuide": {
+      "label": "🎧 Free audio guide",
+      "desc": "You can explore the monument and read about the three kings above on your own."
+    },
+    "hours": {
+      "tag": "01",
+      "title": "Opening hours",
+      "time": "Open 24 hours",
+      "items": [
+        { "label": "Best time to visit", "value": "Early morning (06:00–08:00) and late afternoon (16:00–18:00)" },
+        { "label": "Sunday Walking Street", "value": "Every Sunday 16:00–22:00" }
+      ]
+    },
+    "fees": {
+      "tag": "02",
+      "title": "Fees",
+      "items": [
+        { "title": "Admission", "desc": "Free — the monument is open to the public at no charge" },
+        { "title": "Getting there", "desc": "In the old city centre, walkable from most accommodation" },
+        { "title": "Photography", "desc": "General photography allowed; please be respectful near the statues" }
+      ]
+    },
+    "transport": {
+      "tag": "03",
+      "title": "Getting there",
+      "items": [
+        { "title": "Red songthaew (public pickup)", "desc": "Chiang Mai's red songthaews pass the old city; ask the driver to drop you at the Three Kings Monument" },
+        { "title": "Tuk-tuk / taxi", "desc": "Tuk-tuks and yellow taxis roam the city; fares are negotiable" },
+        { "title": "Bicycle / on foot", "desc": "The old city is walkable and bike-friendly; the monument is near Wat Phra Singh and Wat Chedi Luang" },
+        { "title": "From Chiang Mai airport", "desc": "About 30 minutes by taxi or shuttle from Chiang Mai International Airport" }
+      ]
+    },
+    "faqTitle": "Frequently asked questions",
+    "photoTips": {
+      "tag": "📸 Photography guide",
+      "tips": [
+        { "title": "Morning & evening light", "desc": "Soft dawn and sunset light give the bronze depth and warmth" },
+        { "title": "Wide shot from the square", "desc": "Step back into the square to frame the monument with the old city behind it" }
+      ]
+    },
+    "faqs": [
+      { "q": "Is there an entrance fee?", "a": "No, admission is free and the monument is open 24 hours." },
+      { "q": "How do I get there?", "a": "It's in the old city centre, easily reached on foot or by red songthaew." },
+      { "q": "Any etiquette I should know?", "a": "Please dress modestly and behave respectfully near the statues, especially while taking photos." },
+      { "q": "What's nearby?", "a": "Every Sunday the area hosts the Sunday Walking Street with stalls and performances." }
+    ],
+    "itinerariesTitle": "Suggested routes",
+    "itineraries": [
+      { "title": "Old City day trip", "desc": "Start at the Three Kings Monument, walk to Wat Phra Singh and Wat Chedi Luang, end at the Sunday Walking Street." },
+      { "title": "Lanna heritage route", "desc": "Morning at the monument and the City Arts & Cultural Centre; afternoon at museums and key temples around the old city." }
+    ]
+  },
+  "food": {
+    "label": "— 05 · Amenities & nearby —",
+    "heading": "Amenities & nearby",
+    "lead": "Services and points of interest around the monument for every visitor's convenience.",
+    "dishes": [
+      { "tag": "01", "name": "Cafés & restaurants", "desc": "The old city around the monument is full of cafés and Northern Thai eateries", "price": "Various" },
+      { "tag": "02", "name": "Tourist information", "desc": "The adjacent City Arts & Cultural Centre provides tourist information", "price": "Free" },
+      { "tag": "03", "name": "Public restrooms", "desc": "Public restrooms are available in the square and nearby", "price": "Free" },
+      { "tag": "04", "name": "Sunday Walking Street", "desc": "Every Sunday the area turns into a lively pedestrian market", "price": "Free entry" }
+    ],
+    "quote": {
+      "text": "The Three Kings Monument is both the starting point of any old-city tour and a beloved local meeting spot.",
+      "author": "— Area management"
+    }
+  },
+  "gallery": {
+    "label": "— 06 · Photo gallery —",
+    "heading": "Three Kings Monument photo gallery",
+    "intro": "A collection of scenes from the Three Kings Monument in Chiang Mai Old City.",
+    "historicalNote": "A bronze monument in an open square in front of the City Arts & Cultural Centre.",
+    "viewLocation": "View location on Google Maps ↗",
+    "credits": "Photos shared for non-profit educational purposes.",
+    "alts": [
+      "Wide view of the Three Kings Monument",
+      "Bronze statues of the three kings",
+      "The open square in front of the monument",
+      "Detail of a king's face",
+      "Visitors photographing the monument",
+      "The monument in the evening",
+      "Golden light at sunset",
+      "Chiang Mai Old City backdrop",
+      "Public ceremony or event",
+      "Close-up of the sculpture",
+      "The monument in a public square",
+      "Nearby Sunday Walking Street",
+      "Scenery around the monument"
+    ]
+  },
+  "reviews": {
+    "label": "— 07 · Visitor reviews —",
+    "heading": "Voices from visitors",
+    "intro": "What travellers from around the world say about the Three Kings Monument.",
+    "declaration": "All reviews are real user opinions, not sponsored.",
+    "featured": [
+      { "text": "A centrepiece of Chiang Mai Old City that everyone should visit at least once.", "source": "— Google Reviews" },
+      { "text": "Beautiful and historically meaningful sculpture, surrounded by a charming old-city atmosphere.", "source": "— TripAdvisor" }
+    ],
+    "items": [
+      { "name": "Somchai T.", "date": "Mar 2026", "rating": "5.0", "text": "A must-visit landmark where you can learn Lanna history up close." },
+      { "name": "Anna K.", "date": "Feb 2026", "rating": "4.5", "text": "The monument is beautiful, especially in the evening when sunset light hits the sculpture." },
+      { "name": "Wichai P.", "date": "Jan 2026", "rating": "4.5", "text": "Very easy to reach in the old city, with cafés and pretty temples nearby." },
+      { "name": "Liu Mei", "date": "Dec 2025", "rating": "4.5", "text": "Great photo spot and the starting point of the Sunday Walking Street." },
+      { "name": "John D.", "date": "Nov 2025", "rating": "4.0", "text": "A place of historical meaning — read about the three kings first to appreciate it more." },
+      { "name": "Pimchanok S.", "date": "Oct 2025", "rating": "5.0", "text": "Lovely atmosphere, good for a relaxed break and photos." },
+      { "name": "Tanaka H.", "date": "Sep 2025", "rating": "4.0", "text": "Open 24 hours; visiting at night has its own charm." },
+      { "name": "Niran R.", "date": "Aug 2025", "rating": "4.5", "text": "Not to be missed for those interested in Lanna history and culture." }
+    ],
+    "viewLocation": "View location on Google Maps ↗",
+    "disclaimer": "Overall rating 4.3 from 8,964 reviews on Google Maps."
+  },
+  "mapSection": {
+    "label": "— 08 · Location & getting there —",
+    "heading": "Location & getting there",
+    "lead": "The Three Kings Monument sits inside the old city walls of Chiang Mai.",
+    "address": "QXRP+3WX, Prapokklao Road, Si Phum, Mueang Chiang Mai District, Chiang Mai 50200, Thailand",
+    "phone": "+6653248604",
+    "plusCode": "QXRP+3WX · Chiang Mai",
+    "coords": "18.79°N · 98.99°E",
+    "viewLocation": "Open in Google Maps ↗",
+    "stats": [
+      { "tag": "Coordinates", "value": "18.79°N 98.99°E", "sub": "Chiang Mai, Thailand" },
+      { "tag": "Distance", "value": "~3 km", "sub": "from Tha Phae Gate" },
+      { "tag": "Plus Code", "value": "QXRP+3WX", "sub": "Si Phum, Mueang Chiang Mai" }
+    ]
+  },
+  "footer": {
+    "brand": { "name": "Three Kings Monument", "tagline": "Heritage of Lanna" },
+    "about": "This site is dedicated to sharing the history and cultural heritage of the Lanna region through digital media. All information is gathered from reliable sources.",
+    "navTitle": "Menu",
+    "navItems": [
+      { "label": "Home", "href": "#home" },
+      { "label": "About", "href": "#about" },
+      { "label": "History", "href": "#history" },
+      { "label": "Guide", "href": "#guide" },
+      { "label": "Amenities", "href": "#food" },
+      { "label": "Gallery", "href": "#gallery" },
+      { "label": "Reviews", "href": "#reviews" },
+      { "label": "Map", "href": "#map" }
+    ],
+    "noteTitle": "Note",
+    "note": "Information may change; please verify the latest hours and rules before travelling.",
+    "mapsLabel": "Google Maps →",
+    "sourcesTitle": "Sources",
+    "sourcesNote": "Facts, coordinates and opening hours are compiled from the reliable sources below.",
+    "disclaimerLead": "This site is a public-interest scholarly guide, not an official channel.",
+    "unofficial": "Independent non-profit project: this is an independent, non-profit visitor-information project with no affiliation to any authority or government body.",
+    "dataSource": "Data source: place information references the Tourism Authority of Thailand, Wikipedia and other public sources, with no commercial endorsement.",
+    "copyright": "© 2026 Three Kings Monument — independent non-profit scholarly guide.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Settings",
+    "transparencyTitle": "Transparency & public-interest purpose",
+    "transparency": "This site operates independently as a non-profit educational resource, sharing Lanna history with the public."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated: January 2026",
+      "sections": [
+        { "h": "Information we collect", "p": "We do not collect any personally identifiable information from visitors to this site." },
+        { "h": "Cookies", "p": "We use cookies only to remember your chosen language and theme settings." },
+        { "h": "Contact", "p": "If you have questions about this policy, you can reach us via the contact details on the home page." }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "updated": "Last updated: January 2026",
+      "sections": [
+        { "h": "Usage", "p": "Content on this site is provided for educational and general-information purposes." },
+        { "h": "Limitation of liability", "p": "We make every effort to provide accurate information but do not guarantee completeness." },
+        { "h": "Copyright", "p": "All content belongs to this scholarly visitor-guide project except where otherwise noted." }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Settings",
+      "updated": "Last updated: January 2026",
+      "intro": "We use cookies to remember your settings. Choose the categories you accept below.",
+      "categories": [
+        { "h": "Essential", "p": "These cookies are necessary for the website to function.", "sub": "Used for language and theme settings", "subStatus": "Always on", "active": true },
+        { "h": "Analytics", "p": "Help us understand site usage anonymously.", "sub": "No data shared with third parties", "subStatus": "Off", "active": false }
+      ],
+      "consent": "When you choose 'Save settings', the data is stored in your browser.",
+      "save": "Save settings",
+      "rejectAll": "Reject all"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const history = messages.history;
+---
+
+<section id="history" class="py-20 bg-teakDeep text-ivory">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-gold text-xl md:text-2xl">{history.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-ivory mt-2">{history.heading}</h2>
+    <p class="mt-4 max-w-2xl text-ivory/80">{history.intro}</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      {history.blocks.map((b, i) => (
+        <div class="rounded-2xl bg-teak/60 border border-gold/20 p-6">
+          <div class="font-display text-goldBright text-3xl mb-3">0{i + 1}</div>
+          <h3 class="font-display text-xl text-ivory mb-2">{b.title}</h3>
+          <p class="text-sm text-ivory/75 leading-relaxed">{b.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- The Seven Great Kings -->
+    <div class="mt-16">
+      <h3 class="font-display text-2xl md:text-3xl text-goldBright mb-6 text-center">{history.kingsTitle}</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {history.kings.map((king, i) => (
+          <details class="group rounded-xl border border-gold/20 bg-teak/40 hover:bg-teak/60 transition-colors [&_summary::-webkit-details-marker]:hidden">
+            <summary class="p-5 cursor-pointer list-none outline-none">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <div class="text-xs uppercase tracking-wider text-gold/80 mb-2">{king.period}</div>
+                  <h4 class="font-display text-lg text-ivory mb-2 leading-snug">{king.name}</h4>
+                  <p class="text-sm text-ivory/70 leading-relaxed">{king.desc}</p>
+                </div>
+                <div class="text-goldBright group-open:rotate-45 transition-transform duration-300">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 pt-0 border-t border-gold/10 mt-2">
+              <h5 class="text-sm font-semibold text-gold mb-2 pt-3">{king.storyTitle}</h5>
+              <p class="text-sm text-ivory/80 leading-relaxed">{king.story}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-16">
+      <div class="rounded-2xl bg-gold/10 border border-gold/30 p-6">
+        <h3 class="font-display text-xl text-goldBright mb-2">{history.legend.title}</h3>
+        <p class="text-sm text-ivory/80 leading-relaxed">{history.legend.text}</p>
+      </div>
+      <div class="rounded-2xl bg-teak/60 border border-gold/20 p-6">
+        <h3 class="font-display text-xl text-goldBright mb-2">{history.didYouKnow.title}</h3>
+        <p class="text-sm text-ivory/80 leading-relaxed">{history.didYouKnow.text}</p>
+      </div>
+    </div>
+
+    <!-- Art & Sculpture Engineering -->
+    <div class="mt-20 border-t border-gold/20 pt-16">
+      <p class="font-hand text-gold text-xl md:text-2xl">{messages.artistry?.label}</p>
+      <h2 class="font-display font-semibold text-3xl md:text-4xl text-ivory mt-2">{messages.artistry?.heading}</h2>
+      <p class="mt-4 max-w-2xl text-ivory/80 mb-10">{messages.artistry?.intro}</p>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        {messages.artistry?.items.map((item: any, i: number) => (
+          <div class="rounded-2xl bg-teak/40 border border-gold/10 p-6">
+            <h3 class="font-display text-lg text-goldBright mb-3">{item.title}</h3>
+            <p class="text-sm text-ivory/75 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
