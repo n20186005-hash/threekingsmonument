@@ -11,7 +11,7 @@ export const siteConfig = {
   // Google Maps — Hero / Gallery / Reviews and JSON-LD sameAs point here
   mapsUrl: 'https://maps.app.goo.gl/5BGjMqx9Y8KDnVYFA',
   // Footer uses a separate, dedicated Google Maps link
-  mapsUrlFooter: 'https://maps.app.goo.gl/QERbeU7GTZCtzj1bA',
+  mapsUrlFooter: 'https://maps.app.goo.gl/5BGjMqx9Y8KDnVYFA',
 
   // real coordinates for the live weather / sunset API (Three Kings Monument, Chiang Mai)
   coords: {
