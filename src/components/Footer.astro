@@ -68,6 +68,19 @@ const mapsUrl = siteConfig.mapsUrlFooter;
           </li>
         ))}
       </ul>
+
+      <div class="mt-8">
+        <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.citationsTitle}</div>
+        <p class="text-sm text-ivory/70 max-w-2xl mb-4">{footer.citationsNote}</p>
+        <ul class="space-y-3 text-sm">
+          {footer.citations.map((c) => (
+            <li class="border-l-2 border-gold/40 pl-3">
+              <div class="font-medium text-ivory">{c.title}</div>
+              <div class="text-ivory/60">{c.meta}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
 
     <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs">

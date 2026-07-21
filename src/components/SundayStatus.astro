@@ -1,0 +1,34 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const s = messages.sundayStatus;
+---
+
+<div class="bg-teak text-ivory border-b border-gold/20">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+    <span id="ss-label" class="font-semibold"></span>
+    <span id="ss-text" class="text-ivory/80"></span>
+  </div>
+</div>
+
+<script is:inline define:vars={{ s }}>
+  (function () {
+    const labelEl = document.getElementById('ss-label');
+    const textEl = document.getElementById('ss-text');
+    if (!labelEl || !textEl) return;
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Bangkok',
+      weekday: 'short',
+      hour: 'numeric',
+      hour12: false,
+    }).formatToParts(now);
+    const weekday = parts.find((p) => p.type === 'weekday').value; // 'Sun'
+    const hour = parseInt(parts.find((p) => p.type === 'hour').value, 10);
+    const active = weekday === 'Sun' && hour >= 16;
+    labelEl.textContent = active ? s.activeLabel : s.idleLabel;
+    textEl.textContent = active ? s.activeText : s.idleText;
+  })();
+</script>

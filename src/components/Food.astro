@@ -14,20 +14,18 @@ const foodImg = '/gallery/three-kings-monument-5.jpg';
     <p class="mt-4 max-w-2xl text-ivory/80">{food.lead}</p>
 
     <div class="mt-10">
-      <div class="grid md:grid-cols-2 gap-4">
-        {food.dishes.map((d) => (
-          <div class="flex gap-4 rounded-xl bg-teakDeep/60 border border-gold/20 p-4">
-            <span class="font-display text-goldBright text-xl mt-0.5">{d.tag}</span>
-            <div>
-              <div class="flex items-baseline justify-between gap-3">
-                <span class="font-semibold text-ivory">{d.name}</span>
-                <span class="text-xs text-gold whitespace-nowrap">{d.price}</span>
-              </div>
-              <p class="text-sm text-ivory/75 mt-1">{d.desc}</p>
-            </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        {food.museums.map((m) => (
+          <div class="rounded-xl bg-teakDeep/60 border border-gold/20 p-5">
+            <div class="text-xs uppercase tracking-wider text-gold mb-2">{m.relation}</div>
+            <h3 class="font-display text-lg text-ivory mb-2">{m.name}</h3>
+            <p class="text-sm text-ivory/75">{m.desc}</p>
           </div>
         ))}
       </div>
+      {food.comboTicket && (
+        <p class="mt-5 text-sm text-ivory/70 max-w-3xl">{food.comboTicket}</p>
+      )}
     </div>
 
     <blockquote class="mt-12 border-l-4 border-gold pl-5 italic font-display text-2xl text-goldBright max-w-3xl">

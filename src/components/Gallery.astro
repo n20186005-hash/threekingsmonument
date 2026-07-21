@@ -7,7 +7,7 @@ interface Props {
 const { messages } = Astro.props;
 const gallery = messages.gallery;
 const alts: string[] = gallery.alts;
-const count = alts.length;
+const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13];
 const mapsUrl = siteConfig.mapsUrl;
 ---
 
@@ -20,12 +20,12 @@ const mapsUrl = siteConfig.mapsUrl;
     <p class="mt-3 text-xs text-ink/50">{gallery.credits}</p>
 
     <div class="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[180px]">
-      {Array.from({ length: count }).map((_, i) => {
+      {photos.map((num, i) => {
         const big = i === 0; // first photo spans larger
         return (
           <div class={`photo-frame rounded-xl ${big ? 'col-span-2 row-span-2' : ''}`}>
           <img
-            src={`/gallery/three-kings-monument-${i + 1}.jpg`}
+            src={`/gallery/three-kings-monument-${num}.jpg`}
               alt={alts[i]}
               loading="lazy"
             />
