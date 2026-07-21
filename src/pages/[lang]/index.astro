@@ -25,6 +25,7 @@ const { lang, messages } = await getI18n(Astro.url);
   <Header lang={lang} messages={messages} />
   <main>
     <Hero lang={lang} messages={messages} />
+    <SundayStatus messages={messages} />
     <About messages={messages} />
     <History messages={messages} />
     <Guide messages={messages} />

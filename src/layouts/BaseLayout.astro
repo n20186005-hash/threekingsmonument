@@ -58,13 +58,32 @@ const jsonLd = [
       },
       {
         '@type': 'Question',
-        name: '需要提前订船吗？ / Need to book a boat in advance?',
+        name: '需要门票吗？ / Is there an entrance fee?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: '多数可在码头现场租到，但节假日建议预订。/ Mostly available on-site, but booking is recommended on holidays.'
+          text: '三王纪念碑全天 24 小时免费开放，无需购票。/ The Three Kings Monument is open 24 hours a day and free of charge.'
         }
       }
     ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CivicStructure',
+    name: siteConfig.name[lang],
+    description,
+    url: canonical,
+    additionalType: 'https://schema.org/Monument',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: siteConfig.address[lang],
+      addressCountry: 'TH',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: siteConfig.coords.lat,
+      longitude: siteConfig.coords.lng,
+    },
+    sameAs: siteConfig.sameAs,
   }
 ];
 ---
