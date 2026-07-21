@@ -6,7 +6,7 @@ export const siteConfig = {
     zh: '三王纪念碑',
   },
   slug: 'three-kings-monument',
-  domain: 'https://three-kings-monument.com',
+  domain: process.env.CURRENT_SITE_DOMAIN ? `https://${process.env.CURRENT_SITE_DOMAIN}` : 'https://threekingsmonument.com',
 
   // Google Maps — Hero / Gallery / Reviews and JSON-LD sameAs point here
   mapsUrl: 'https://maps.app.goo.gl/5BGjMqx9Y8KDnVYFA',
