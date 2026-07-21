@@ -1,9 +1,0 @@
-=== en === ALL KEYS OK
-=== zh === ALL KEYS OK
-=== th === ALL KEYS OK
-history.sevenOmens.items: en=4 zh=4 th=4
-history.statuePositions.items: en=3 zh=3 th=3
-guide.culturalEvents.items: en=4 zh=4 th=4
-food.museums: en=3 zh=3 th=3
-footer.citations: en=3 zh=3 th=3
-gallery.alts: en=12 zh=12 th=12

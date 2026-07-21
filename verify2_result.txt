@@ -1,4 +1,0 @@
-[en] missing: Pact of Three Kings | statue positions | Citations | coming soon
-[th] missing: เร็วๆ นี้
-[zh] missing: NONE OK
-gallery ref #12: 0 (want 0), #13: 1 (want >0)
