@@ -115,3 +115,29 @@ body {
   font-size: 0.78rem;
   letter-spacing: 0.04em;
 }
+
+/* horizontal nav without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* wide data tables that scroll on small screens */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-scroll table {
+  min-width: 62rem;
+}
+
+/* weather / data tiles on dark sections */
+.metric {
+  border: 1px solid rgba(201, 169, 98, 0.28);
+  border-radius: 0.75rem;
+  background: rgba(7, 26, 28, 0.45);
+  padding: 0.7rem 0.9rem;
+}

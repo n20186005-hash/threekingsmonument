@@ -25,6 +25,12 @@ const stars = (r: string) => {
       <span class="font-display text-2xl text-goldBright">{siteConfig.rating}</span>
       <span class="text-ivory/70">{reviews.disclaimer}</span>
     </div>
+    {/* 评分与评价数来源说明（同步自 Google 地图） */}
+    <p class="mt-2 text-xs text-ivory/60">
+      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-goldBright underline-offset-2 hover:underline">
+        {reviews.sourceSync}
+      </a>
+    </p>
     <p class="mt-2 text-xs text-ivory/50">{reviews.declaration}</p>
 
     <div class="grid md:grid-cols-2 gap-4 mt-8">
@@ -64,8 +70,8 @@ const stars = (r: string) => {
     </div>
 
     <div class="mt-10 text-center">
-      <a href={mapsUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-ivory border border-gold/50 px-6 py-3 rounded-full hover:bg-gold hover:text-teak transition-colors">
-        {reviews.viewLocation}
+      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ivory border border-gold/50 px-6 py-3 rounded-full hover:bg-gold hover:text-teak transition-colors">
+        {reviews.viewLocation} <span aria-hidden="true">↗</span>
       </a>
     </div>
   </div>

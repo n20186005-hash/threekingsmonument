@@ -1,0 +1,47 @@
+{
+  "name": "Three Kings Monument — Chiang Mai Visitor Guide",
+  "short_name": "Three Kings",
+  "description": "Independent visitor guide to the Three Kings Monument (อนุสาวรีย์สามกษัตริย์) in Chiang Mai's old city: history, location map, opening hours, surrounding landmarks and traveller reviews.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#071a1c",
+  "theme_color": "#0d2a2e",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["travel", "education", "reference"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/gallery/three-kings-monument-1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Location & Map",
+      "short_name": "Map",
+      "url": "/en/#map"
+    },
+    {
+      "name": "Visitor Reviews",
+      "short_name": "Reviews",
+      "url": "/en/#reviews"
+    }
+  ]
+}

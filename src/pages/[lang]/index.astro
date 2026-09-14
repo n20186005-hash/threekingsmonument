@@ -1,38 +1,65 @@
 ---
-import { languagesList } from '../../i18n/ui';
+import { getI18n, defaultLang, languagesList } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+import { getWeather } from '../../lib/weather';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Hero from '../../components/Hero.astro';
+import Weather from '../../components/Weather.astro';
+import SundayStatus from '../../components/SundayStatus.astro';
 import About from '../../components/About.astro';
+import Stories from '../../components/Stories.astro';
 import History from '../../components/History.astro';
+import Landmarks from '../../components/Landmarks.astro';
+import Seasons from '../../components/Seasons.astro';
+import Routes from '../../components/Routes.astro';
 import Guide from '../../components/Guide.astro';
+import Facilities from '../../components/Facilities.astro';
 import Food from '../../components/Food.astro';
+import Responsibility from '../../components/Responsibility.astro';
 import Gallery from '../../components/Gallery.astro';
 import Reviews from '../../components/Reviews.astro';
 import MapSection from '../../components/MapSection.astro';
-import SundayStatus from '../../components/SundayStatus.astro';
+import SourcesSection from '../../components/SourcesSection.astro';
 import Footer from '../../components/Footer.astro';
-import { getI18n } from '../../i18n/ui';
 
-export async function getStaticPaths() {
-  return languagesList.map((lang) => ({ params: { lang } }));
+const requested = Astro.params.lang;
+if (!requested || !languagesList.includes(requested as Lang)) {
+  return Astro.redirect(`/${defaultLang}/`, 302);
 }
 
 const { lang, messages } = await getI18n(Astro.url);
+
+// One snapshot per request, shared by the hero strip and the forecast section.
+const weather = await getWeather();
 ---
 
-<BaseLayout lang={lang} title={messages.meta.title} description={messages.meta.description}>
+<BaseLayout
+  lang={lang}
+  title={messages.meta.title}
+  description={messages.meta.description}
+  schemaDescription={messages.meta.schemaDescription}
+  faqs={messages.guide.faqs}
+>
   <Header lang={lang} messages={messages} />
   <main>
-    <Hero lang={lang} messages={messages} />
+    <Hero lang={lang} messages={messages} weather={weather} />
+    <Weather lang={lang} messages={messages} weather={weather} />
     <SundayStatus messages={messages} />
     <About messages={messages} />
+    <Stories messages={messages} />
     <History messages={messages} />
+    <Landmarks lang={lang} messages={messages} />
+    <Seasons messages={messages} />
+    <Routes messages={messages} />
     <Guide messages={messages} />
+    <Facilities messages={messages} />
     <Food messages={messages} />
-    <Gallery messages={messages} />
+    <Responsibility messages={messages} />
+    <Gallery lang={lang} messages={messages} />
     <Reviews messages={messages} />
     <MapSection lang={lang} messages={messages} />
+    <SourcesSection lang={lang} messages={messages} />
   </main>
   <Footer lang={lang} messages={messages} />
 </BaseLayout>

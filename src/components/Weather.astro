@@ -1,0 +1,288 @@
+---
+import { getWeather, adviceFor, weekdayIndex, clock, shortDate } from '../lib/weather';
+import WeatherIcon from './WeatherIcon.astro';
+
+interface Props {
+  lang: any;
+  messages: Record<string, any>;
+  /** Shared snapshot from the page; fetched here only as a fallback. */
+  weather?: Awaited<ReturnType<typeof getWeather>>;
+}
+const { messages, weather = null } = Astro.props;
+const w = messages.weather;
+
+// Server-side only: the snapshot is fetched and cached in the worker, the
+// markup below never talks to the network from the browser.
+const snapshot = weather ?? (await getWeather());
+const now = snapshot?.now;
+const today = snapshot?.days[0];
+const advice = snapshot ? adviceFor(snapshot) : null;
+const note = advice ? String(w.note).replace('{p}', String(advice.rainChanceNext)) : '';
+---
+
+<section id="weather" class="py-20 bg-teakDeep text-ivory border-t border-gold/20">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-gold text-xl md:text-2xl">{w.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-ivory mt-2">{w.heading}</h2>
+    <p class="mt-4 max-w-3xl text-ivory/80">{w.intro}</p>
+    <p class="mt-3 max-w-3xl border-l-2 border-gold/40 pl-4 text-sm text-ivory/60">{w.setting}</p>
+
+    {
+      snapshot && now && today && advice ? (
+        <div>
+          {/* risk first — anything here outranks the ordinary tips below */}
+          {advice.risk.length ? (
+            <div class="mt-8 rounded-2xl border border-burgundy/60 bg-burgundy/20 p-5">
+              <div class="flex flex-wrap items-center gap-3">
+                <svg
+                  class="h-6 w-6 shrink-0 text-goldBright"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3.5 21 20H3l9-16.5Z" />
+                  <path d="M12 10v4M12 17.2h.01" />
+                </svg>
+                <span class="font-display text-lg text-goldBright">{w.riskTitle}</span>
+                <span class="chip border-burgundy/50 text-ivory/80">{w.riskBadge}</span>
+              </div>
+              <ul class="mt-3 space-y-2">
+                {advice.risk.map((key) => (
+                  <li class="flex gap-2 text-sm text-ivory/90">
+                    <span class="text-goldBright" aria-hidden="true">
+                      •
+                    </span>
+                    <span>{w.risk[key]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div class="mt-8 flex items-start gap-3 rounded-2xl border border-gold/25 bg-teak/40 p-5">
+              <svg
+                class="mt-0.5 h-5 w-5 shrink-0 text-goldBright"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              <div>
+                <div class="font-display text-goldBright">{w.calmTitle}</div>
+                <p class="mt-1 text-sm text-ivory/75">{w.calm}</p>
+              </div>
+            </div>
+          )}
+
+          <div class="grid lg:grid-cols-[1fr_1.45fr] gap-6 mt-6">
+            {/* base card: temperature, sky, rain chance, wind */}
+            <div class="rounded-2xl bg-teak/60 border border-gold/20 p-6">
+              <div class="text-xs uppercase tracking-widest text-gold">{w.now}</div>
+
+              <div class="mt-3 flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex items-end gap-3">
+                    <span class="font-display font-semibold leading-none text-6xl text-goldBright">
+                      {now.temperature}°
+                    </span>
+                    <span class="pb-1 text-ivory/85">{w.codes[now.group]}</span>
+                  </div>
+                  <div class="mt-2 text-sm text-ivory/65">
+                    {w.feelsLike} {now.feelsLike}° · {w.high} {today.max}° / {w.low} {today.min}°
+                  </div>
+                </div>
+                <WeatherIcon group={now.group} isDay={now.isDay} class="w-16 h-16 shrink-0 text-goldBright" />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-6">
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.rainNext}</div>
+                  <div class="font-display text-2xl text-goldBright">{advice.rainChanceNext}%</div>
+                </div>
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.gust}</div>
+                  <div class="font-display text-2xl text-goldBright">
+                    {now.gust}
+                    <span class="text-xs text-ivory/60"> {w.units.wind}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3 text-sm">
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.humidity}</div>
+                  <div class="font-display text-lg text-goldBright">{now.humidity}%</div>
+                </div>
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.wind}</div>
+                  <div class="font-display text-lg text-goldBright">
+                    {now.wind}
+                    <span class="text-xs text-ivory/60"> {w.units.wind}</span>
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.rain}</div>
+                  <div class="font-display text-lg text-goldBright">
+                    {today.rain}
+                    <span class="text-xs text-ivory/60"> {w.units.rain}</span>
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.uv}</div>
+                  <div class="font-display text-lg text-goldBright">{today.uv}</div>
+                </div>
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.sunrise}</div>
+                  <div class="font-display text-lg text-goldBright">{clock(today.sunrise)}</div>
+                </div>
+                <div class="metric">
+                  <div class="text-xs text-ivory/55">{w.sunset}</div>
+                  <div class="font-display text-lg text-goldBright">{clock(today.sunset)}</div>
+                </div>
+              </div>
+
+              <p class="mt-4 text-xs text-ivory/45">
+                {w.updated} {clock(snapshot.updatedAt)}
+              </p>
+            </div>
+
+            {/* advice: only the rules that actually fired */}
+            <div class="rounded-2xl bg-teak/60 border border-gold/20 p-6">
+              <h3 class="font-display text-xl text-goldBright">{w.adviceTitle}</h3>
+
+              <div class="mt-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div>
+                  <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gold">
+                    <svg
+                      class="h-4 w-4 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M8.2 3.5 4.6 5.6 3.2 9.6l3 1.2V20.5h11.6V10.8l3-1.2-1.4-4-3.6-2.1a4.4 4.4 0 0 1-7.6 0Z" />
+                    </svg>
+                    {w.tabs.wear}
+                  </div>
+                  <ul class="mt-3 space-y-2 text-sm text-ivory/80">
+                    {advice.wear.map((key) => (
+                      <li class="flex gap-2">
+                        <span class="text-goldBright" aria-hidden="true">
+                          •
+                        </span>
+                        <span>{w.wear[key]}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gold">
+                    <svg
+                      class="h-4 w-4 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z" />
+                      <circle cx="12" cy="10" r="2.4" />
+                    </svg>
+                    {w.tabs.plan}
+                  </div>
+                  <ul class="mt-3 space-y-2 text-sm text-ivory/80">
+                    {advice.plan.map((key) => (
+                      <li class="flex gap-2">
+                        <span class="text-goldBright" aria-hidden="true">
+                          •
+                        </span>
+                        <span>{w.plan[key]}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="flex items-center gap-2 text-xs uppercase tracking-wider text-gold">
+                    <svg
+                      class="h-4 w-4 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5.5 8h13l-1 12h-11l-1-12Z" />
+                      <path d="M9 8V6.5a3 3 0 0 1 6 0V8" />
+                    </svg>
+                    {w.tabs.gear}
+                  </div>
+                  <ul class="mt-3 flex flex-wrap gap-2">
+                    {advice.gear.map((key) => (
+                      <li class="chip border-gold/40 text-ivory/85">{w.gear[key]}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {advice.showProbabilityNote && (
+                <div class="mt-6 rounded-xl border border-gold/20 bg-teakDeep/40 p-4">
+                  <div class="text-xs uppercase tracking-widest text-gold">{w.noteTitle}</div>
+                  <p class="mt-1 text-sm text-ivory/75">{note}</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* week outlook */}
+          <div class="rounded-2xl bg-teak/60 border border-gold/20 p-6 mt-6">
+            <h3 class="font-display text-xl text-goldBright">{w.outlook}</h3>
+
+            <ul class="mt-3 divide-y divide-gold/15">
+              {snapshot.days.map((day) => (
+                <li class="flex items-center gap-3 sm:gap-4 py-3">
+                  <span class="w-20 shrink-0 text-sm text-ivory/85">
+                    {w.weekdays[weekdayIndex(day.date)]}
+                    <span class="text-ivory/40"> {shortDate(day.date)}</span>
+                  </span>
+                  <WeatherIcon group={day.group} class="w-6 h-6 shrink-0 text-gold" />
+                  <span class="hidden sm:block flex-1 text-sm text-ivory/70">{w.codes[day.group]}</span>
+                  <span class="sm:hidden flex-1 text-xs text-ivory/60">
+                    {w.rainChance} {day.rainChance}%
+                  </span>
+                  <span class="hidden sm:block w-28 text-right text-xs text-ivory/60">
+                    {w.rainChance} {day.rainChance}%
+                  </span>
+                  <span class="w-24 shrink-0 text-right font-display text-goldBright">
+                    {day.max}°
+                    <span class="text-ivory/55"> / {day.min}°</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <p class="mt-8 max-w-3xl text-sm text-ivory/70 rounded-2xl bg-teak/50 border border-gold/20 p-5">
+          {w.unavailable}
+        </p>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const s = messages.seasons;
+---
+
+<section id="seasons" class="py-20 bg-teak text-ivory border-t border-gold/20">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-gold text-xl md:text-2xl">{s.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-ivory mt-2">{s.heading}</h2>
+    <p class="mt-4 max-w-3xl text-ivory/80">{s.intro}</p>
+
+    <div class="table-scroll mt-10 rounded-2xl border border-gold/25 bg-teakDeep/40">
+      <table class="w-full border-collapse text-left text-sm">
+        <thead>
+          <tr class="bg-teakDeep/80 text-goldBright">
+            <th scope="col" class="p-4 font-semibold whitespace-nowrap">{s.columns.season}</th>
+            <th scope="col" class="p-4 font-semibold">{s.columns.weather}</th>
+            <th scope="col" class="p-4 font-semibold">{s.columns.water}</th>
+            <th scope="col" class="p-4 font-semibold">{s.columns.wildlife}</th>
+            <th scope="col" class="p-4 font-semibold">{s.columns.strategy}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gold/15">
+          {
+            s.rows.map((row: any) => (
+              <tr class="align-top">
+                <th scope="row" class="p-4 text-left font-normal">
+                  <span class="block font-display text-base text-goldBright">{row.season}</span>
+                  <span class="mt-1 block text-xs text-ivory/60">{row.months}</span>
+                </th>
+                <td class="p-4 text-ivory/80">{row.weather}</td>
+                <td class="p-4 text-ivory/80">{row.water}</td>
+                <td class="p-4 text-ivory/80">{row.wildlife}</td>
+                <td class="p-4 text-ivory/90">{row.strategy}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 max-w-4xl rounded-2xl border border-gold/20 bg-teakDeep/40 p-5">
+      <div class="text-xs uppercase tracking-widest text-gold">{s.noteTitle}</div>
+      <p class="mt-2 text-sm leading-relaxed text-ivory/75">{s.note}</p>
+    </div>
+  </div>
+</section>

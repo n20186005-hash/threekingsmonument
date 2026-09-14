@@ -1,6 +1,9 @@
 import th from './th.json';
 import en from './en.json';
 import zh from './zh.json';
+import thSections from './sections/th.json';
+import enSections from './sections/en.json';
+import zhSections from './sections/zh.json';
 
 export const defaultLang = 'th';
 export const languagesList = ['th', 'en', 'zh'] as const;
@@ -8,11 +11,18 @@ export type Lang = (typeof languagesList)[number];
 
 export const languages: Record<Lang, string> = {
   th: 'ไทย',
-  en: 'English',
+  en: 'EN',
   zh: '中文',
 };
 
-const messagesMap: Record<Lang, any> = { th, en, zh };
+// Language switcher order — default locale first.
+export const langSwitcherOrder: Lang[] = ['th', 'zh', 'en'];
+
+const messagesMap: Record<Lang, any> = {
+  th: { ...th, ...thSections },
+  en: { ...en, ...enSections },
+  zh: { ...zh, ...zhSections },
+};
 
 // mapping for <html lang> / hreflang
 export const htmlLang: Record<Lang, string> = {

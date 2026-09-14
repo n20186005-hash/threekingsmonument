@@ -3,26 +3,74 @@ import '../styles/global.css';
 import { siteConfig } from '../config';
 import { htmlLang, languagesList, type Lang } from '../i18n/ui';
 
+interface FaqItem {
+  q: string;
+  a: string;
+}
 interface Props {
   lang: Lang;
   title: string;
   description: string;
+  /** Schema.org description template ({{ATTRACTION_FULL_NAME}} in {{CITY_NAME}}, …). */
+  schemaDescription?: string;
+  /** Visible FAQ list rendered on the page — kept in sync with the FAQPage schema. */
+  faqs?: FaqItem[];
+  /** Policy pages stay reachable but out of the index (see LegalDoc). */
+  noindex?: boolean;
 }
-const { lang, title, description } = Astro.props;
-const canonical = `${siteConfig.domain}/${lang}/`;
+const {
+  lang,
+  title,
+  description,
+  schemaDescription = description,
+  faqs = [],
+  noindex = false,
+} = Astro.props;
+
+/* ── SEO entity binding ({{DOMAIN_NAME}} … {{GOVT_TOURISM_URL}}) ───────────── */
+const base = siteConfig.domain;
+// Canonical is the page's own URL, not the locale home — policy pages used to
+// declare the home page as canonical, which contradicts the page itself.
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = `${base}${pathname}`;
+const e = siteConfig.entity;
+const fullName = e.fullName[lang];
+const shortName = e.shortName[lang];
+const city = e.city[lang];
+const province = e.province[lang];
+const country = e.country[lang];
+const nearby = e.nearby[lang];
+const altNames = Array.from(new Set(e.altNames[lang]));
+const heroImage = `${base}/gallery/three-kings-monument-1.jpg`;
+const robots = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1';
 
 const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
-    name: siteConfig.name[lang],
-    description,
-    image: `${siteConfig.domain}/gallery/three-kings-monument-1.jpg`,
-    url: canonical,
+    '@id': `${base}/#attraction`,
+    name: fullName,
+    alternateName: Array.from(
+      new Set([shortName, siteConfig.name[lang], ...altNames, `${city} ${fullName}`])
+    ),
+    description: schemaDescription,
+    url: base,
+    image: [
+      heroImage,
+      `${base}/gallery/three-kings-monument-2.jpg`,
+      `${base}/gallery/three-kings-monument-3.jpg`,
+    ],
+    isAccessibleForFree: true,
+    hasMap: siteConfig.mapsUrl,
     address: {
       '@type': 'PostalAddress',
       streetAddress: siteConfig.address[lang],
-      addressCountry: 'TH',
+      addressLocality: city,
+      addressRegion: province,
+      postalCode: e.postalCode,
+      addressCountry: e.countryCode,
     },
     geo: {
       '@type': 'GeoCoordinates',
@@ -33,6 +81,8 @@ const jsonLd = [
       '@type': 'AggregateRating',
       ratingValue: siteConfig.rating,
       reviewCount: siteConfig.reviewCount.replace(/,/g, ''),
+      bestRating: '5',
+      worstRating: '1',
     },
     openingHoursSpecification: [
       {
@@ -44,39 +94,36 @@ const jsonLd = [
     ],
     sameAs: siteConfig.sameAs,
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: '哪天去最好？ / Best day to visit?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '工作日比周末人少，破晓时分最能感受原汁原味的氛围。/ Weekdays are less crowded. Early morning offers the most authentic experience.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: '需要门票吗？ / Is there an entrance fee?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '三王纪念碑全天 24 小时免费开放，无需购票。/ The Three Kings Monument is open 24 hours a day and free of charge.'
-        }
-      }
-    ]
-  },
+  ...(faqs.length
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          '@id': `${base}/#faq`,
+          mainEntity: faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        },
+      ]
+    : []),
   {
     '@context': 'https://schema.org',
     '@type': 'CivicStructure',
-    name: siteConfig.name[lang],
+    '@id': `${base}/#civic-structure`,
+    name: fullName,
     description,
     url: canonical,
     additionalType: 'https://schema.org/Monument',
+    image: heroImage,
     address: {
       '@type': 'PostalAddress',
       streetAddress: siteConfig.address[lang],
-      addressCountry: 'TH',
+      addressLocality: city,
+      addressRegion: province,
+      postalCode: e.postalCode,
+      addressCountry: e.countryCode,
     },
     geo: {
       '@type': 'GeoCoordinates',
@@ -84,14 +131,27 @@ const jsonLd = [
       longitude: siteConfig.coords.lng,
     },
     sameAs: siteConfig.sameAs,
-  }
+  },
+  {
+    // Geographic breadcrumb: {{ATTRACTION_FULL_NAME}} → {{CITY_NAME}} → {{STATE_PROVINCE}} → {{COUNTRY_NAME}}
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${base}/#place-hierarchy`,
+    name: `${fullName} → ${city} → ${province} → ${country}`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: fullName, item: base },
+      { '@type': 'ListItem', position: 2, name: city, item: `${base}/${lang}/#map` },
+      { '@type': 'ListItem', position: 3, name: province },
+      { '@type': 'ListItem', position: 4, name: country },
+    ],
+  },
 ];
 ---
 
 <!doctype html>
 <html lang={htmlLang[lang]}>
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXM22WWPKP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -102,20 +162,43 @@ const jsonLd = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/jpeg" href={`/gallery/three-kings-monument-1.jpg`} />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <!-- Canonical 规范网址 -->
     <link rel="canonical" href={canonical} />
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={htmlLang[lang]} />
-    <meta property="og:title" content={title} />
+    <meta property="og:site_name" content={fullName} />
+    <meta property="og:title" content={`${fullName} - ${city} Travel Guide`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteConfig.domain}/gallery/three-kings-monument-1.jpg`} />
+    <meta property="og:image" content={heroImage} />
+    <meta property="og:image:alt" content={`${fullName} in ${city}`} />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${fullName} - ${city} Travel Guide`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={heroImage} />
+    <!-- Geo entity signals -->
+    <meta name="geo.region" content={`${e.countryCode}-50`} />
+    <meta name="geo.placename" content={city} />
+    <meta name="geo.position" content={`${siteConfig.coords.lat};${siteConfig.coords.lng}`} />
+    <meta name="ICBM" content={`${siteConfig.coords.lat}, ${siteConfig.coords.lng}`} />
     {languagesList.map((l) => (
-      <link rel="alternate" hreflang={htmlLang[l]} href={`${siteConfig.domain}/${l}/`} />
+      <link rel="alternate" hreflang={htmlLang[l]} href={`${base}/${l}/`} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`${siteConfig.domain}/th/`} />
+    <link rel="alternate" hreflang="x-default" href={`${base}/en/`} />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0d2a2e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={shortName} />
+    <link rel="apple-touch-icon" href="/icon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -124,8 +207,20 @@ const jsonLd = [
       rel="stylesheet"
     />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <!-- Entity + nearby landmark semantic cluster -->
+    <meta
+      name="keywords"
+      content={`${fullName}, ${shortName}, ${city}, ${province}, ${country}, monument, ${nearby[0]}, ${nearby[1]}, ${siteConfig.category[lang]}`}
+    />
   </head>
   <body class="grain">
     <slot />
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
+      }
+    </script>
   </body>
 </html>

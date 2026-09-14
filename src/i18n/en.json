@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "Three Kings Monument Chiang Mai — Visitor Guide, History & Legend",
-    "description": "A complete guide to the Three Kings Monument (อนุสาวรีย์สามกษัตริย์) in old Chiang Mai: the story of King Mengrai, King Ramkhamhaeng and King Ngam Muang founding the city, visiting info, photos and traveller reviews."
+    "title": "Three Kings Monument Chiang Mai: Free Entry, Hours & Location",
+    "description": "Free public plaza in Chiang Mai Old City, open 24 hours. Opening hours, GPS coordinates and Plus Code, the three kings' history, and walking distance to Wat Phra Singh.",
+    "schemaDescription": "Complete visitor guide to Three Kings Monument in Chiang Mai, Thailand: a free public plaza open 24 hours, with GPS coordinates and Plus Code, the history of King Mengrai, King Ramkhamhaeng and King Ngam Muang, and the nearby Wat Chedi Luang, Wat Phra Singh and Sunday Walking Street."
   },
   "common": {
     "siteName": "Three Kings Monument",
@@ -23,7 +24,13 @@
     "food": "Cultural Triangle",
     "gallery": "Gallery",
     "reviews": "Reviews",
-    "map": "Map"
+    "map": "Map",
+    "weather": "Weather",
+    "stories": "Stories",
+    "seasons": "Seasons",
+    "routes": "Routes",
+    "facilities": "Facilities",
+    "responsibility": "Responsibility"
   },
   "hero": {
     "eyebrow": "— 01 · Heritage of Lanna —",
@@ -34,7 +41,8 @@
     "cta1": "Start Exploring",
     "cta2": "Explore Around →",
     "rating": "4.3",
-    "reviewCount": "8,964",
+    "reviewCount": "9,034",
+    "reviewSource": "Rating and review count synced from Google Maps user reviews · September 2026 · See all reviews on Google Maps ↗",
     "liveWeather": "Live Weather",
     "liveSunset": "Sunset",
     "loading": "Loading live data from the monument's real coordinates…",
@@ -54,6 +62,7 @@
     "label": "— 02 · About the Monument —",
     "heading": "About the Three Kings Monument",
     "lead": "A landmark at the heart of Chiang Mai's old city, honouring a great friendship and alliance in Lanna history.",
+    "entityIntro": "Welcome to the Three Kings Monument (พระบรมราชานุสาวรีย์สามกษัตริย์), widely recognized as the central monument of Chiang Mai's old city. Located in the heart of Chiang Mai, Chiang Mai Province, Thailand, this destination serves as a primary hub for travellers visiting the region.",
     "paragraph1": "The Three Kings Monument stands in an open square inside the old city walls, in front of the Chiang Mai City Arts & Cultural Centre (the former Provincial Hall), and marks the start of the famous Sunday Walking Street — a must-see for every visitor.",
     "paragraph2": "The three bronze statues depict King Mengrai, founder of Chiang Mai; King Ramkhamhaeng the Great of Sukhothai; and King Ngam Muang of Phayao. Legend has it the three kings were close friends and allies who founded Chiang Mai together in 1296.",
     "quote": "The three kings who founded Chiang Mai remind us of friendship, unity and the wisdom of governance.",
@@ -190,10 +199,15 @@
       ]
     },
     "faqs": [
-      { "q": "Is there an entrance fee?", "a": "No, it is open 24 hours a day and free of charge." },
-      { "q": "How do I get there?", "a": "It is in the old-city centre, easily reached on foot or by red songthaew." },
+      { "q": "Is there an entrance fee for the Three Kings Monument?", "a": "No — it is free. The monument stands in an open public plaza with no ticket office and no gate, and it can be visited around the clock." },
+      { "q": "What are the opening hours?", "a": "The plaza is open 24 hours a day, every day. Early morning (06:00–08:00) and late afternoon are the most comfortable times to visit." },
+      { "q": "Where is it, and what are the exact coordinates?", "a": "On Prapokklao Road inside the old city, Tambon Si Phum, Mueang Chiang Mai District, Chiang Mai 50200, Thailand. Plus Code QXRP+3WX · Chiang Mai; coordinates 18.7902° N, 98.9874° E — accurate enough to paste straight into a maps app." },
+      { "q": "Which three kings does the monument show?", "a": "King Mengrai of Lanna, King Ramkhamhaeng of Sukhothai and King Ngam Muang of Phayao. The statue group commemorates the alliance behind the founding of Chiang Mai in 1296." },
+      { "q": "Were the three kings allies?", "a": "Yes. The chronicles describe a pact of friendship between Mengrai, Ramkhamhaeng and Ngam Muang; the monument celebrates that alliance and the founding of the city." },
+      { "q": "How do I get there?", "a": "It is in the old-city centre, easily reached on foot from most old-city guesthouses or by red songthaew." },
+      { "q": "Which landmark is closest, and how far is Wat Phra Singh?", "a": "The Chiang Mai City Arts & Cultural Centre is directly behind the statue, about a minute on foot. Wat Chedi Luang is about 600 m away and Wat Phra Singh about 750 m — both a short walk." },
       { "q": "What etiquette should I observe?", "a": "Please dress modestly and behave respectfully near the statues, especially when taking photos." },
-      { "q": "What is nearby?", "a": "Every Sunday the area hosts the Sunday Walking Street with stalls and performances." }
+      { "q": "What happens on Sunday evening?", "a": "From about 16:00 every Sunday the surrounding street becomes the Sunday Walking Street market and part of the road is closed to traffic." }
     ],
     "itinerariesTitle": "Suggested Itineraries",
     "itineraries": [
@@ -223,6 +237,7 @@
     "historicalNote": "The bronze monument stands in an open square in front of the City Arts & Cultural Centre.",
     "viewLocation": "View on Google Maps ↗",
     "credits": "Photos used for non-profit educational purposes.",
+    "imageCopyright": "Image rights: all images displayed on this website remain the property and copyright of their original photographers.",
     "alts": [
       "Wide view of the Three Kings Monument",
       "Bronze statues of the three kings",
@@ -242,7 +257,7 @@
     "label": "— 07 · Visitor Reviews —",
     "heading": "Voices of Visitors",
     "intro": "How travellers from around the world rate the Three Kings Monument.",
-    "declaration": "All reviews are genuine user opinions, not sponsored content.",
+    "declaration": "Synced from Google Maps user reviews, sync date September 2026; copyright belongs to the original authors and Google Maps.",
     "featured": [
       { "text": "A core landmark of Chiang Mai's old city — everyone should visit at least once.", "source": "— Google Review" },
       { "text": "Beautiful sculpture rich in history, surrounded by a charming old-city atmosphere.", "source": "— TripAdvisor" }
@@ -257,8 +272,9 @@
       { "name": "Tanaka H.", "date": "Sep 2025", "rating": "4.0", "text": "Open 24 hours — visiting at night has its own charm." },
       { "name": "Niran R.", "date": "Aug 2025", "rating": "4.5", "text": "Not to be missed for those interested in Lanna history and culture." }
     ],
-    "viewLocation": "View on Google Maps ↗",
-    "disclaimer": "Google Maps aggregate rating 4.3, based on 8,964 reviews."
+    "viewLocation": "See all reviews on Google Maps",
+    "sourceSync": "Rating and review count synced from Google Maps user reviews · September 2026 · See all reviews on Google Maps↗",
+    "disclaimer": "Google Maps aggregate rating 4.3, based on 9,034 reviews."
   },
   "mapSection": {
     "label": "— 08 · Location & Transport —",
@@ -267,13 +283,44 @@
     "address": "QXRP+3WX, Prapokklao Road, Si Phum, Mueang Chiang Mai District, Chiang Mai 50200, Thailand",
     "phone": "+6653248604",
     "plusCode": "QXRP+3WX · Chiang Mai",
-    "coords": "18.79°N · 98.99°E",
+    "coords": "18.7902°N · 98.9874°E",
     "viewLocation": "Open in Google Maps ↗",
+    "officialNote": "For official updates and regional tourism information, visit",
+    "officialLink": "Thailand / Chiang Mai Official Tourism Portal",
     "stats": [
-      { "tag": "Coordinates", "value": "18.79°N 98.99°E", "sub": "Chiang Mai, Thailand" },
+      { "tag": "Coordinates", "value": "18.7902°N 98.9874°E", "sub": "Chiang Mai, Thailand" },
       { "tag": "Distance", "value": "~3 km", "sub": "from Tha Phae Gate" },
       { "tag": "Plus Code", "value": "QXRP+3WX", "sub": "Si Phum, Mueang Chiang Mai" }
     ]
+  },
+  "landmarks": {
+    "label": "— 03.7 · Location & Surroundings —",
+    "locationHeading": "Location & How to Visit Three Kings Monument in Chiang Mai",
+    "locationIntro": "The Three Kings Monument stands on an open public square on Prapokklao Road, in the historic centre of Chiang Mai, Chiang Mai Province, Thailand (Plus Code QXRP+3WX). It sits inside the old city walls, right in front of the Chiang Mai City Arts & Cultural Centre, and is easy to reach on foot from most old-city accommodation.",
+    "breadcrumbLabel": "Place hierarchy",
+    "heading": "Landmarks & Attractions Around Three Kings Monument",
+    "intro": "When visiting the Three Kings Monument, visitors can easily explore the surrounding historical landmarks and points of interest on foot, including Wat Chedi Luang and Wat Phra Singh.",
+    "items": [
+      { "name": "Chiang Mai City Arts & Cultural Centre", "relation": "Behind the monument", "desc": "Directly behind the statues in the former provincial hall — Lanna art, history and rotating exhibitions." },
+      { "name": "Wat Chedi Luang", "relation": "≈600 m walk", "desc": "A landmark temple with a massive ancient chedi, a few minutes to the south-east of the square." },
+      { "name": "Wat Phra Singh", "relation": "≈750 m walk", "desc": "Home of the revered Phra Singh Buddha image, west along Ratchadamnoen Road." },
+      { "name": "Sunday Walking Street", "relation": "Starts at the square", "desc": "Every Sunday from 16:00, Ratchadamnoen Road becomes a pedestrian night market starting right here." }
+    ]
+  },
+  "sourceSection": {
+    "label": "— 09 · Sources —",
+    "heading": "Sources & References",
+    "intro": "Historical facts, coordinates, opening hours and the rating on this page are compiled from the reliable sources below, to support the page's expertise, authoritativeness and trustworthiness (E-E-A-T).",
+    "officialTitle": "Authoritative sources",
+    "reviewTitle": "Reviews",
+    "reviewSync": "Reviews · synced September 2026",
+    "reviewNote": "Synced from Google Maps user reviews, sync date September 2026; copyright belongs to the original authors and Google Maps.",
+    "reviewLink": "See all reviews on Google Maps",
+    "imageRightsTitle": "Image rights",
+    "imageRights": "Image rights: all images displayed on this website remain the property and copyright of their original photographers.",
+    "govtTitle": "Official tourism portal",
+    "govtNote": "For official updates and regional tourism information, visit",
+    "govtLink": "Thailand / Chiang Mai Official Tourism Portal"
   },
   "footer": {
     "brand": { "name": "Three Kings Monument", "tagline": "Heritage of Lanna" },
@@ -309,7 +356,10 @@
     "terms": "Terms of Service",
     "cookies": "Cookie Settings",
     "transparencyTitle": "Transparency & Public Benefit",
-    "transparency": "This site operates as an independent, non-profit educational resource, sharing Lanna history with the public."
+    "transparency": "This site operates as an independent, non-profit educational resource, sharing Lanna history with the public.",
+    "imageCopyright": "Image rights: all images displayed on this website remain the property and copyright of their original photographers.",
+    "reviewSyncTag": "Reviews · synced September 2026",
+    "reviewSyncNote": "Synced from Google Maps user reviews, sync date September 2026; copyright belongs to the original authors and Google Maps."
   },
   "legal": {
     "privacy": {

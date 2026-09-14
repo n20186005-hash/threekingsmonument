@@ -1,11 +1,12 @@
 ---
 import { siteConfig } from '../config';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
-  lang: any;
+  lang: Lang;
   messages: Record<string, any>;
 }
-const { messages } = Astro.props;
+const { lang, messages } = Astro.props;
 const map = messages.mapSection;
 ---
 
@@ -40,8 +41,30 @@ const map = messages.mapSection;
       </div>
 
       <div class="rounded-2xl overflow-hidden border border-gold/30 h-[320px] md:h-auto">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3777.177718065219!2d98.98477251232616!3d18.790231682282734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da3a99aea090bf%3A0xd27733ba3bc943d2!2z5LiJ546L57qq5b-156KR!5e0!3m2!1szh-CN!2sus!4v1784621196483!5m2!1szh-CN!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe
+          src={siteConfig.mapsEmbedSrc}
+          width="100%"
+          height="450"
+          style="border:0;"
+          title={`${siteConfig.entity.fullName[lang]} map`}
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
       </div>
     </div>
+
+    <!-- 权威出站链接 · {{GOVT_TOURISM_URL}} -->
+    <p class="mt-8 text-sm text-ink/75">
+      {map.officialNote}{' '}
+      <a
+        href={siteConfig.govtTourismUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-teak font-medium underline underline-offset-4 hover:text-gold"
+      >
+        {map.officialLink}
+      </a>.
+    </p>
   </div>
 </section>

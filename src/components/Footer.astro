@@ -1,8 +1,9 @@
 ---
 import { siteConfig } from '../config';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
-  lang: any;
+  lang: Lang;
   messages: Record<string, any>;
 }
 const { lang, messages } = Astro.props;
@@ -69,6 +70,20 @@ const mapsUrl = siteConfig.mapsUrlFooter;
         ))}
       </ul>
 
+      <!-- 评价来源同步说明 -->
+      <div class="mt-6 rounded-xl bg-teak/50 border border-gold/20 p-5 max-w-3xl">
+        <div class="text-xs uppercase tracking-wider text-gold mb-2">{footer.reviewSyncTag}</div>
+        <p class="text-sm text-ivory/80 leading-relaxed">{footer.reviewSyncNote}</p>
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 inline-flex items-center gap-1 text-sm text-goldBright hover:underline"
+        >
+          {footer.mapsLabel}
+        </a>
+      </div>
+
       <div class="mt-8">
         <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.citationsTitle}</div>
         <p class="text-sm text-ivory/70 max-w-2xl mb-4">{footer.citationsNote}</p>
@@ -95,6 +110,7 @@ const mapsUrl = siteConfig.mapsUrlFooter;
       <p>{footer.disclaimerLead}</p>
       <p class="text-ivory/70">{footer.unofficial}</p>
       <p>{footer.dataSource}</p>
+      <p>{footer.imageCopyright}</p>
       <p class="pt-2 text-ivory/40">{footer.copyright}</p>
     </div>
   </div>

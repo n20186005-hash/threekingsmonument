@@ -1,0 +1,386 @@
+{
+  "weather": {
+    "label": "— 04 · Live Conditions —",
+    "heading": "Live Weather & 7-Day Outlook",
+    "intro": "Conditions on the square right now and for the week ahead, so you can time the walk, the light and the water breaks before you set out.",
+    "setting": "Site environment: an inland urban heritage plaza. There is no sea or tide, no snow or ice and no canyon or river rafting, so the guidance below focuses on how the heat actually feels, how hard the rain is and how strong the sun is.",
+    "now": "Right now on the square",
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "gust": "Gusts",
+    "rain": "Rain today",
+    "uv": "UV index",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "updated": "Updated",
+    "outlook": "Next 7 days",
+    "high": "High",
+    "low": "Low",
+    "rainChance": "Rain chance",
+    "rainNext": "Rain chance, next 12 h",
+    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "adviceTitle": "What to do today",
+    "tabs": {
+      "wear": "What to wear",
+      "plan": "How to plan the visit",
+      "gear": "What to bring"
+    },
+    "riskTitle": "Weather risks",
+    "riskBadge": "Heads up",
+    "calmTitle": "No weather risk expected",
+    "calm": "Nothing in the current conditions or the next 12 hours needs special caution — a normal visit works.",
+    "noteTitle": "About that rain chance",
+    "note": "A {p}% rain chance means rain is possible somewhere in that window, not that it will definitely rain. The higher the number, the more an umbrella earns its place in the bag.",
+    "wear": {
+      "hot": "Hot and bright — light, breathable short sleeves and quick-dry trousers, in pale colours that reflect the sun. The paving radiates heat, so midday on the square feels hotter than the reading.",
+      "hotHumid": "Hot and humid — go for quick-dry, breathable fabrics and avoid anything heavy or tight. Air-conditioned galleries feel cold after the heat, so a thin layer helps.",
+      "rainy": "Rain about — a water-resistant or quick-dry jacket, and skip long trousers that drag. Pick shoes with real tread; wet stone is slippery.",
+      "bigSwing": "A wide gap between day and night — dress in layers: short sleeves by day, a light jacket or shawl for the early morning and after dark.",
+      "cold": "Cold for Chiang Mai — a proper jacket plus a scarf, and something for your hands if you plan to linger on the square at dawn.",
+      "cool": "Cool and comfortable — long sleeves or a light jacket is about right, with one more layer before sunrise and after sunset.",
+      "windy": "Breezy to windy — wear something that sits close to the body, and skip loose hems and long skirts that catch the wind.",
+      "mild": "Mild and easy — ordinary light clothing, plus one removable layer for the cooler ends of the day."
+    },
+    "plan": {
+      "storm": "Thunderstorms around: move indoors now and stay clear of the trees, flagpoles and the open moat edge. Open-air plans are better moved to another day.",
+      "rainHeavy": "Heavy rain: skip open-air sightseeing and head for the indoor galleries and exhibition spaces. The moat walk and the open square are best left for later.",
+      "rainLight": "Showers about: the stone paving and the moat kerb get slick, so keep open-air stops short — or use the indoor galleries if you want to linger.",
+      "fog": "Low visibility: views across the square are cut down and the mountain road toward Doi Suthep may be worth postponing. Drive slowly if you are heading out of town.",
+      "clearHot": "Clear but hot at midday: come early or after 17:00, and move into the galleries through the middle of the day — the paving radiates heat and feels hotter than the forecast.",
+      "clear": "Clear and good for being outside: the square and the moat walk take a long, slow visit, and the bronze looks best at sunrise and sunset.",
+      "cloudy": "Soft, even light — ideal for photography and for a long walk with none of the glare, and the paving stays cooler underfoot.",
+      "windy": "Windy: long open-air stops get uncomfortable and gusts can affect viewpoints nearby, so keep hold of hats and loose items.",
+      "mild": "Settled weather — a normal-paced visit to the square and the surrounding temple streets works well."
+    },
+    "gear": {
+      "umbrella": "Compact umbrella",
+      "raincoat": "Light rain shell (skip the long umbrella when it is windy)",
+      "sunscreen": "Sunscreen",
+      "sunglasses": "Sunglasses",
+      "hat": "Sun hat",
+      "water": "Plenty of drinking water",
+      "jacket": "Light jacket",
+      "thickCoat": "Warm jacket and scarf",
+      "extraLayer": "A layer you can add or remove",
+      "mask": "Face mask (when visibility or air quality is poor)",
+      "towel": "Quick-dry towel or handkerchief",
+      "shoes": "Shoes with grip",
+      "drybag": "Dry bag for camera and phone"
+    },
+    "risk": {
+      "storm": "Lightning risk: the square is open ground. Go indoors at the first thunder — do not shelter under the big trees or along the moat.",
+      "heavyRain": "Heavy rain risk: short, intense downpours raise the moat quickly and make the walks slick. Stay away from the water's edge and low-lying paths.",
+      "strongWind": "Wind risk: gusts are strong. Keep clear of signage, temporary stalls and tall trees, and watch for falling debris.",
+      "heat": "Heat risk: the apparent temperature is very high. Long exposure at midday can lead to heat exhaustion — cut outdoor time and keep drinking water.",
+      "cold": "Cold risk: early-morning temperatures are low. If you plan to stay on the square, dress for it.",
+      "lowVisibility": "Low-visibility risk: mountain roads and viewpoints nearby are affected. Slow down and use fog lamps if driving.",
+      "uv": "Extreme UV risk: the UV index is at the top of the scale and skin can burn quickly. Use shade properly and cover up."
+    },
+    "unavailable": "Conditions are being refreshed. Read the sky, keep to the shade and carry water.",
+    "units": { "wind": "km/h", "rain": "mm" },
+    "codes": {
+      "clear": "Clear sky",
+      "mainlyClear": "Mainly clear",
+      "partlyCloudy": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "showers": "Rain showers",
+      "storm": "Thunderstorm",
+      "snow": "Snow"
+    }
+  },
+
+  "seasons": {
+    "label": "— 06 · Seasonal Strategy —",
+    "heading": "Seasonal Visit Strategy",
+    "intro": "Chiang Mai's year runs as a cool, a hot and a wet season, with a smoke season layered on top. Climate, moat water and city wildlife move together — this table puts them side by side so you can choose your window.",
+    "noteTitle": "How to read this table",
+    "note": "Seasonal ranges are 30-year climate averages from the Thai Meteorological Department; water-level and urban-ecology notes follow Chiang Mai Municipality and the Pollution Control Department. These are typical patterns, not forecasts.",
+    "columns": {
+      "season": "Quarter & season",
+      "months": "Months",
+      "weather": "Weather",
+      "water": "Moat water conditions",
+      "wildlife": "Urban wildlife & greenery",
+      "strategy": "Visit strategy"
+    },
+    "rows": [
+      {
+        "season": "Q1 · Cool season into early heat",
+        "months": "Jan – Mar",
+        "weather": "Dry and clear. Nights 14–18 °C, days 28–33 °C, climbing towards 36 °C in late March. Humidity is at its lowest and skies are the clearest of the year; smoke haze builds from February as the burning season starts.",
+        "water": "Moat at its annual low: still, slow-moving water with exposed banks and silt along the inner kerb.",
+        "wildlife": "Wintering birds still work the moat; deciduous roadside trees drop their leaves; squirrels are most active in the early morning.",
+        "strategy": "January and February are the best walking months of the year. From March, move outings to 06:00–09:00 and check the air-quality index before leaving."
+      },
+      {
+        "season": "Q2 · Hot season into the monsoon",
+        "months": "Apr – Jun",
+        "weather": "The hottest stretch: 22–38 °C, peaking in April when readings can pass 40 °C. April is also the worst of the smoke season. From late May the monsoon breaks with heavy afternoon downpours.",
+        "water": "The moat recovers from its low point as the rains arrive; the first storms turn the water turbid and fast-moving for a day or two.",
+        "wildlife": "Bare branches green up within weeks of the first rains; frogs and insects become loud at dusk and the moat turns into a busy urban habitat corridor.",
+        "strategy": "Avoid 11:00–15:00 entirely. During Songkran in mid-April the square fills with water-fighting crowds and traffic is restricted — expect to get wet and keep electronics sealed."
+      },
+      {
+        "season": "Q3 · High rainy season",
+        "months": "Jul – Sep",
+        "weather": "24–33 °C with high humidity. Short, intense convectional downpours most afternoons; September is the wettest month of the year.",
+        "water": "Moat at its highest level, doing its original job as the old city's drainage and storage system; water runs fast and looks muddy straight after a storm.",
+        "wildlife": "The greenest quarter: mature trees in full leaf, dragonflies and water birds along the moat, frogs calling after every shower.",
+        "strategy": "Plan around mornings, carry light rain gear, and stay clear of the moat edge and large old trees during storms. Never wade into the moat."
+      },
+      {
+        "season": "Q4 · End of rains into cool season",
+        "months": "Oct – Dec",
+        "weather": "October still delivers showers, then the air dries and cools sharply from November. December mornings can drop to 14 °C, giving the coolest and clearest skies of the year.",
+        "water": "Moat level falls back and the water gradually clears again through the cool season.",
+        "wildlife": "Wintering birds return to the moat and the square's trees fill with sparrows and pigeons; night temperatures drop enough to want a jacket.",
+        "strategy": "November and December are the pick of the year for long walks and photography. Loy Krathong in November draws large evening crowds around the water."
+      }
+    ]
+  },
+
+  "routes": {
+    "label": "— 07 · Routes & Rhythm —",
+    "heading": "Routes by Visitor Type",
+    "intro": "Three ready-made ways around the square, chosen by who is travelling with you and how much walking the group can comfortably take. All of them start and finish at the monument.",
+    "audienceLabel": "Choose your group",
+    "audiences": [
+      {
+        "tag": "Families with children",
+        "name": "The short, shaded loop",
+        "duration": "2 – 2.5 hours · about 1 km",
+        "pace": "Slow, with sitting breaks",
+        "steps": [
+          "Start at the square while it is still cool — children can use the open paving while you explain who the three kings were.",
+          "Step into the cultural centre behind the statues: air-conditioned galleries, indoor toilets and a short exhibition you can leave at any time.",
+          "Walk the shaded north side towards the inner-moat lane for a water and birdwatching stop, keeping children away from the kerb.",
+          "Finish with a drink and a toilet stop before the midday heat, or come back after 17:00 when local families take over the square."
+        ],
+        "tips": "Keep the loop short, carry water and hats, and treat the square as an open-air classroom rather than a fairground."
+      },
+      {
+        "tag": "Photography & nature",
+        "name": "The light-chasing route",
+        "duration": "3 – 4 hours · about 2.5 km",
+        "pace": "Flexible, driven by the light",
+        "steps": [
+          "Arrive before sunrise for blue hour and the first soft light on the bronze — the square is quiet and empty.",
+          "Shoot from the south-east corner for backlight, then move to the west face for a neutral, evenly lit frame.",
+          "Follow the inner-moat lane for reflections, dragonflies and the old trees that frame the water.",
+          "Return at dusk: the statues are floodlit after dark and long exposures work well from a low tripod position."
+        ],
+        "tips": "Direct midday sun flattens the bronze. The two best windows are 06:00–08:00 and 17:00–19:00. Ask before photographing people close up."
+      },
+      {
+        "tag": "Low mobility & wheelchair users",
+        "name": "The step-free visit",
+        "duration": "1 – 1.5 hours · about 400 m",
+        "pace": "Flat, step-free, with seated breaks",
+        "steps": [
+          "Arrange a vehicle drop-off on the Prapokklao Road edge of the square — the paving is level and there is no step up to the statues.",
+          "Circle the monument on the flat inner path at your own pace; the statue bases are visible from a seated height.",
+          "Use the step-free entrance, lifts and accessible toilets of the cultural centre directly behind the square during opening hours.",
+          "Avoid Sunday after 16:00, when market stalls block the flat routes and the square becomes congested."
+        ],
+        "tips": "The square is the most accessible spot in the old city; the surrounding temples have steps, so treat them as optional add-ons."
+      }
+    ],
+    "plansTitle": "Recommended general routes",
+    "plansIntro": "Two straightforward itineraries if you have no particular preference — one for half a day, one for a full day, both entirely on foot.",
+    "plans": [
+      {
+        "name": "Half day",
+        "total": "About 4 hours · on foot",
+        "summary": "The monument plus the three classic old-city stops around it.",
+        "items": [
+          { "time": "07:00", "title": "Three Kings Monument square", "desc": "Quiet light, empty paving and the best photographs of the day." },
+          { "time": "07:45", "title": "City arts and cultural centre", "desc": "Directly behind the statues: Lanna history, cool air and toilets." },
+          { "time": "09:00", "title": "Wat Chedi Luang", "desc": "A few minutes south-east — the vast ruined chedi and the city pillar shrine." },
+          { "time": "10:30", "title": "Wat Phra Singh", "desc": "West along Ratchadamnoen Road for classic Lanna temple architecture." },
+          { "time": "11:30", "title": "Old-city eating area", "desc": "Any of the local restaurants and food stalls within a 10-minute walk, then out of the heat." }
+        ]
+      },
+      {
+        "name": "Full day",
+        "total": "About 8 hours · on foot, with a midday break",
+        "summary": "The monument, the temple core, the moat and the market district.",
+        "items": [
+          { "time": "07:00", "title": "Three Kings Monument square", "desc": "Start while the square is still cool and empty." },
+          { "time": "08:00", "title": "Lanna museums and cultural centre", "desc": "Two small museums plus the cultural centre fill the morning." },
+          { "time": "10:30", "title": "Wat Chedi Luang and the city pillar", "desc": "The spiritual centre of the old city." },
+          { "time": "12:30", "title": "Lunch and siesta", "desc": "Eat in the old-city block and wait out the hottest two hours indoors." },
+          { "time": "15:00", "title": "Wat Phra Singh and the west lanes", "desc": "Cooler light and much quieter streets." },
+          { "time": "16:30", "title": "Moat walk to the east gate", "desc": "Follow the water to the Tha Phae area for late-afternoon light." },
+          { "time": "18:00", "title": "Evening market district", "desc": "Street food, or the Sunday walking street if it is Sunday." },
+          { "time": "20:00", "title": "Back at the monument", "desc": "The statues are floodlit and the square is at its most atmospheric." }
+        ]
+      }
+    ]
+  },
+
+  "facilities": {
+    "label": "— 09 · Visitor Services —",
+    "heading": "Visitor Services & Surroundings",
+    "intro": "What is available around the square, described by type of service rather than by name. Times are walking times from the monument.",
+    "neutrality": "The Three Kings Monument is an open public square and has no dedicated visitor facilities of its own. This section lists the types of service you will find nearby. As a non-profit educational guide we do not name, rank or endorse individual businesses, and nothing here is paid placement.",
+    "items": [
+      {
+        "name": "Toilets",
+        "time": "0 – 5 min",
+        "type": "Public / venue",
+        "desc": "The square itself has no permanent public toilet. Usable facilities are inside the public cultural venues facing the square during their opening hours, while businesses around the edge normally reserve theirs for customers. Plan ahead in the early morning and late at night."
+      },
+      {
+        "name": "Parking",
+        "time": "0 – 10 min",
+        "type": "On-street / commercial",
+        "desc": "There is no large dedicated car park at the square. Expect marked on-street bays along the surrounding inner-city lanes and small commercial car parks nearby. On Sundays from 16:00 the streets become a walking street and vehicles are barred — park outside the moat ring and walk in."
+      },
+      {
+        "name": "Food & drink",
+        "time": "2 – 15 min",
+        "type": "Restaurants / stalls / cafés",
+        "desc": "The old-city block is the main eating district: northern Thai kitchens, street-food stalls, cafés and bakeries, plus vegetarian and halal-friendly options. Prices run from street-stall to full-service. Sunday evenings add temporary market stalls right beside the square."
+      },
+      {
+        "name": "Accommodation",
+        "time": "1 – 15 min",
+        "type": "Hotels / guesthouses / hostels",
+        "desc": "Inside the moat the area is dominated by small boutique hotels, guesthouses, hostels and serviced apartments along the main inner roads. Rooms facing the square are the closest you can stay to the monument."
+      },
+      {
+        "name": "Shops & supplies",
+        "time": "2 – 10 min",
+        "type": "Convenience / supermarket / pharmacy",
+        "desc": "Round-the-clock convenience stores, small supermarkets and pharmacies, plus traditional fresh markets and weekend markets. Bottled water, sun protection, rain gear and basic medicines are all easy to find."
+      },
+      {
+        "name": "Fuel & charging",
+        "time": "10 – 20 min",
+        "type": "Fuel station / EV charger",
+        "desc": "There are no petrol stations inside the old city; the nearest sit on the ring roads and main arteries just outside the moat, usually with a shop and toilets. Electric-vehicle charging points cluster at commercial and public car parks outside the moat rather than in the old town."
+      },
+      {
+        "name": "Cash & connectivity",
+        "time": "2 – 10 min",
+        "type": "Bank / ATM / mobile data",
+        "desc": "Banks and ATMs are within a short walk for cash withdrawals. Cards and QR payment are widely accepted in malls and chain stores, while street stalls generally prefer cash. Mobile data coverage across the old city is good."
+      },
+      {
+        "name": "Accessibility & baby care",
+        "time": "0 – 5 min",
+        "type": "Step-free / family room",
+        "desc": "The square is flat, hard-paved and step-free, so wheelchairs and strollers can circle the monument. Step-free entrances, lifts and baby-changing rooms exist in the public cultural venues and larger commercial buildings facing the square, during their opening hours."
+      },
+      {
+        "name": "Drinking water & heat relief",
+        "time": "0 – 10 min",
+        "type": "Drinking water / shade",
+        "desc": "Public drinking fountains are rare in Thai cities; buy bottled water from convenience stores or carry a bottle and ask to refill at a venue. Shade is limited in the middle of the square, so use the tree-lined edges and the indoor venues at midday."
+      },
+      {
+        "name": "Health & emergency",
+        "time": "5 – 15 min",
+        "type": "Clinic / pharmacy / emergency",
+        "desc": "Clinics and pharmacies are within the old-city block. Emergency numbers: 191 police, 1669 ambulance and rescue, 1155 Tourist Police. The square is well lit at night, but keep an eye on your belongings in crowds."
+      }
+    ],
+    "emergencyTitle": "Emergency contacts",
+    "emergency": [
+      { "label": "Tourist Police (English spoken)", "value": "1155" },
+      { "label": "Police", "value": "191" },
+      { "label": "Ambulance & rescue", "value": "1669" },
+      { "label": "Tourism Authority of Thailand call centre", "value": "1672" }
+    ]
+  },
+
+  "responsibility": {
+    "label": "— 12 · Stewardship —",
+    "heading": "Understanding the Place & Your Part in It",
+    "intro": "A short reading of what this square actually represents, and what visitors can do — or avoid — to keep it in good shape for the city that uses it every day.",
+    "scienceTitle": "Why this square matters beyond the statues",
+    "science": [
+      "The square is a working civic space, not a fenced exhibit. Residents use it for merit-making, morning exercise, school outings, graduations and evening gatherings, so its value to the city is social as much as historical.",
+      "The monument marks the origin story of a city founded in 1296 as the capital of Lanna, and it anchors a cultural cluster: the former provincial hall, the Lanna museums, the city pillar shrine and the two great temples all sit within a few hundred metres.",
+      "The moat that rings the old city is an engineered hydraulic system, not decoration. It still manages stormwater, which is why it rises fast in the rainy season and turns turbid after heavy storms.",
+      "The old-city tree canopy is heritage infrastructure in its own right: mature rain trees and flame trees shade the square, host urban birds and reduce the heat-island effect of the surrounding paving."
+    ],
+    "groupsTitle": "Visitor responsibility",
+    "groups": [
+      {
+        "title": "Cultural respect",
+        "items": [
+          "Do not climb on, lean against or sit on the statue bases — they are memorials, not furniture.",
+          "Cover shoulders and knees when you enter the temples and cultural venues around the square.",
+          "Never point your feet at the statues or at anyone sitting on the ground, and keep voices and music down at the memorial.",
+          "If you want a photo with the statues, take it standing. Posing as if on horseback or mimicking the royal gesture is considered disrespectful."
+        ]
+      },
+      {
+        "title": "Environment & public health",
+        "items": [
+          "Do not feed the pigeons, sparrows or any other urban animal. Feeding concentrates birds, damages paving and monuments with droppings, and spreads disease to both people and animals.",
+          "Do not release fish, turtles or other animals into the moat — introduced species displace the aquatic life already there.",
+          "Use the bins provided and separate your waste; litter blown into the moat is expensive to remove.",
+          "Do not pick flowers, break branches or take cuttings from the old-city trees, and never wade, swim or fish in the moat."
+        ]
+      },
+      {
+        "title": "Your own safety",
+        "items": [
+          "Drink water before you feel thirsty and stay out of direct sun at midday — heat exhaustion is the most common visitor problem here.",
+          "Wet polished stone and metal become very slippery in the rainy season, and storms drop branches, so keep clear of the moat edge and large old trees during heavy rain.",
+          "Watch your belongings in the Sunday market crowds and keep bags zipped in front of you.",
+          "Call 1155 (Tourist Police) or 1669 (rescue) if you need help — both are free."
+        ]
+      }
+    ],
+    "pledgeTitle": "Editorial policy",
+    "pledge": "This site is an independent, non-profit educational project about a single public monument. We publish no advertising and accept no payment for mentions; we do not name or rank surrounding businesses; historical statements are attributed to the published sources listed in the references section, and legends are labelled as legends. The information here is general guidance only and does not replace official notices from the Thai authorities."
+  },
+
+  "stories": {
+    "label": "— 03.5 · Stories & Legends —",
+    "heading": "Stories, Legends & Background",
+    "intro": "The bronze is only the surface. Behind it sit a founding alliance, a quarrel settled by a third king, a sacred white elephant and seven centuries of city identity — part recorded history, part legend, and it matters which is which.",
+    "badgeHistory": "Recorded history",
+    "badgeLegend": "Legend / traditional account",
+    "items": [
+      {
+        "badge": "Recorded history",
+        "title": "A friendship sealed before there was a city",
+        "era": "Late 13th century",
+        "body": "Lanna chronicles present King Mengrai of the rising northern Tai kingdom, King Ramkhamhaeng of Sukhothai and King Ngam Muang of Phayao as contemporaries who bound themselves to a mutual non-aggression pact. The alliance mattered strategically: with Sukhothai and Phayao as friends rather than rivals, Mengrai could consolidate the north without fighting on three fronts. In 1296 he founded Chiang Mai — literally the new city — on the plain between the Ping River and the mountain, and the three-way understanding became part of how the city explained its own peaceful beginnings."
+      },
+      {
+        "badge": "Legend / traditional account",
+        "title": "The quarrel, and the third king who judged it",
+        "era": "Traditional account",
+        "body": "The best-known story of the three kings is not about founding a city but about a dispute. In the traditional telling, a young nobleman was found in the private quarters of Ngam Muang's queen. Mengrai had him executed without consulting his ally, and Ngam Muang — whose own teacher had also died in the affair — raised his army in anger. Ramkhamhaeng rode between them and brokered a settlement that restored the friendship. The episode is retold in the Chiang Mai chronicle tradition as the moment the alliance was tested and repaired. Historians treat the details as literary rather than documentary, but the theme — that Lanna's founding alliance had to be actively renewed rather than simply inherited — is close to how the chronicles describe early Chiang Mai politics."
+      },
+      {
+        "badge": "Legend / traditional account",
+        "title": "The white elephant that chose the mountain",
+        "era": "1383 · Doi Suthep",
+        "body": "Chiang Mai's sacred geography is tied to a relic story. When a Buddha relic was brought to the region it was placed on the back of a white elephant, which was released to walk where it would. The animal climbed Doi Suthep, trumpeted three times and died on the spot, and the temple of Wat Phra That Doi Suthep was built over it. The story belongs to the temple on the mountain rather than to this square, but it explains why the old city is oriented as it is: the monument, the city pillar and the main streets all look towards a landscape the city has treated as protected ground for more than six centuries."
+      },
+      {
+        "badge": "Recorded history",
+        "title": "Seven centuries of a very specific kind of power",
+        "era": "1296 to the present",
+        "body": "The monument commemorates a founding, but the real history of this square is one of reinvention. Chiang Mai has been a Lanna capital, a Burmese-administered town, a Siamese provincial centre and today a tourism and education hub — and the ground in front of the old provincial hall has served civic purposes through most of it. That is why the monument was placed here in the 1970s and cast in bronze in the 1980s by a national fine-arts team: it was a deliberate act of civic memory-making in a city rebuilding its identity, which is also why Mengrai is the tallest of the three, facing south towards the city he founded."
+      },
+      {
+        "badge": "Recorded history",
+        "title": "The city pillar next door",
+        "era": "Inthakin, every year",
+        "body": "A few minutes away stands the city pillar shrine, and its annual festival is the clearest surviving example of pre-Buddhist city-foundation ritual in Thailand. The pillar represents the guardian spirit of the city; the Inthakin ceremony renews it in a fixed month of the Lanna calendar, and the procession that carries the ritual offerings through the old-city streets still passes the monument square. For visitors it is the moment when the modern civic function of the square and the far older animist layer of the city meet."
+      }
+    ],
+    "sourcesNote": "Background drawn from published translations of the Lanna chronicles and municipal heritage material. Legends are labelled as legends and are not presented as documented fact."
+  }
+}

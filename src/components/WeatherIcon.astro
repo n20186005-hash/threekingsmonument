@@ -1,0 +1,89 @@
+---
+interface Props {
+  group: string;
+  isDay?: boolean;
+  class?: string;
+}
+const { group, isDay = true, class: className = 'w-6 h-6' } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {
+    (group === 'clear' || group === 'mainlyClear') &&
+      (isDay ? (
+        <>
+          <circle cx="12" cy="12" r="4.2" />
+          <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6" />
+        </>
+      ) : (
+        <path d="M20 14.5A7.5 7.5 0 0 1 9.5 4a6.5 6.5 0 1 0 10.5 10.5Z" />
+      ))
+  }
+
+  {
+    group === 'partlyCloudy' && (
+      <>
+        <circle cx="8.5" cy="8" r="3" />
+        <path d="M8.5 2.8v1.6M2.8 8h1.6M4.4 4.4l1.1 1.1M12.6 4.4l-1.1 1.1" />
+        <path d="M9.5 19h8.2a3.1 3.1 0 0 0 .2-6.2 4.3 4.3 0 0 0-8.1 1.1A2.6 2.6 0 0 0 9.5 19Z" />
+      </>
+    )
+  }
+
+  {
+    group === 'overcast' && (
+      <path d="M7.4 18h9.2a3.3 3.3 0 0 0 .2-6.6 4.6 4.6 0 0 0-8.7 1.2A2.8 2.8 0 0 0 7.4 18Z" />
+    )
+  }
+
+  {
+    group === 'fog' && (
+      <>
+        <path d="M8 14.5h8.4a3 3 0 0 0 .2-6 4.2 4.2 0 0 0-8 1.1A2.6 2.6 0 0 0 8 14.5Z" />
+        <path d="M5 18h13M7 21h10" />
+      </>
+    )
+  }
+
+  {
+    (group === 'drizzle' || group === 'rain' || group === 'showers') && (
+      <>
+        <path d="M8 14h8.4a3 3 0 0 0 .2-6 4.2 4.2 0 0 0-8 1.1A2.6 2.6 0 0 0 8 14Z" />
+        <path
+          d={
+            group === 'drizzle'
+              ? 'M9.5 17v1.2M12 17.4v1.2M14.5 17v1.2'
+              : 'M9 17l-1 3M12.5 17l-1 3M16 17l-1 3'
+          }
+        />
+      </>
+    )
+  }
+
+  {
+    group === 'storm' && (
+      <>
+        <path d="M8 13.5h8.4a3 3 0 0 0 .2-6 4.2 4.2 0 0 0-8 1.1A2.6 2.6 0 0 0 8 13.5Z" />
+        <path d="M13 15.5l-3 4h3l-1 3.5" />
+      </>
+    )
+  }
+
+  {
+    group === 'snow' && (
+      <>
+        <path d="M8 14h8.4a3 3 0 0 0 .2-6 4.2 4.2 0 0 0-8 1.1A2.6 2.6 0 0 0 8 14Z" />
+        <path d="M9.4 17.2v2.4M8.2 18.4h2.4M14.2 17.2v2.4M13 18.4h2.4" />
+      </>
+    )
+  }
+</svg>

@@ -11,7 +11,10 @@ const { type } = Astro.props;
 const { lang, messages } = await getI18n(Astro.url);
 const doc = (messages.legal as any)[type];
 ---
-<BaseLayout lang={lang} title={doc.title} description={doc.title}>
+<!-- Policy pages are required by law but have no search demand. They were
+     collecting ~95 impressions that compete with the actual guide, so they are
+     kept out of the index while remaining crawlable. -->
+<BaseLayout lang={lang} title={doc.title} description={doc.title} noindex>
   <Header lang={lang} messages={messages} />
   <main class="mx-auto max-w-3xl px-5 py-14 text-teak/85 leading-relaxed">
     <h1 class="font-display text-3xl md:text-4xl text-teak mb-2">{doc.title}</h1>

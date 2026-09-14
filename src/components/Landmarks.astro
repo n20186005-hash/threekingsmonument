@@ -1,0 +1,66 @@
+---
+import { siteConfig } from '../config';
+import type { Lang } from '../i18n/ui';
+
+interface Landmark {
+  name: string;
+  relation: string;
+  desc: string;
+}
+interface Props {
+  lang: Lang;
+  messages: Record<string, any>;
+}
+const { lang, messages } = Astro.props;
+const l = messages.landmarks;
+const e = siteConfig.entity;
+
+// {{ATTRACTION_FULL_NAME}} → {{CITY_NAME}} → {{STATE_PROVINCE}} → {{COUNTRY_NAME}}
+const crumbs = [e.fullName[lang], e.city[lang], e.province[lang], e.country[lang]];
+const mapsUrl = siteConfig.mapsUrl;
+---
+
+<section id="landmarks" class="py-20 bg-ivory text-ink">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-gold text-xl md:text-2xl">{l.label}</p>
+
+    <!-- H2 · Location & How to Visit {{ATTRACTION_SHORT_NAME}} in {{CITY_NAME}} -->
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-teak mt-2">{l.locationHeading}</h2>
+    <p class="mt-4 max-w-3xl text-ink/85">{l.locationIntro}</p>
+
+    <!-- 地理面包屑与归属层级 -->
+    <nav aria-label={l.breadcrumbLabel} class="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink/70">
+      {crumbs.map((c, i) => (
+        <span class="inline-flex items-center gap-2">
+          {i > 0 && <span class="text-gold">→</span>}
+          <span class={i === 0 ? 'font-semibold text-teak' : ''}>{c}</span>
+        </span>
+      ))}
+    </nav>
+
+    <!-- H2 · Landmarks & Attractions Around {{ATTRACTION_SHORT_NAME}} -->
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-teak mt-14">{l.heading}</h2>
+    <p class="mt-4 max-w-3xl text-ink/85">{l.intro}</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+      {l.items.map((it: Landmark) => (
+        <div class="rounded-2xl border border-gold/30 bg-white/50 p-5 flex flex-col">
+          <div class="text-xs uppercase tracking-wider text-gold">{it.relation}</div>
+          <h3 class="font-display text-lg text-teak mt-1 mb-2">{it.name}</h3>
+          <p class="text-sm text-ink/75 leading-relaxed flex-1">{it.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10">
+      <a
+        href={mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-teak border border-gold/50 px-6 py-3 rounded-full hover:bg-gold hover:text-teak transition-colors"
+      >
+        {messages.gallery.viewLocation}
+      </a>
+    </div>
+  </div>
+</section>

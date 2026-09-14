@@ -14,6 +14,8 @@ const about = messages.about;
     <div class="grid lg:grid-cols-12 gap-10 mt-10">
       <div class="lg:col-span-7 space-y-4 text-ink/85">
         <p class="text-lg text-teak font-medium">{about.lead}</p>
+        {/* 首段等位声明 — 域名含义与官方全称的语义等同 */}
+        <p class="rounded-xl bg-gold/10 border-l-4 border-gold px-4 py-3 text-teak">{about.entityIntro}</p>
         <p>{about.paragraph1}</p>
         <p>{about.paragraph2}</p>
         <blockquote class="border-l-4 border-gold pl-5 italic text-teak font-display text-xl my-6">

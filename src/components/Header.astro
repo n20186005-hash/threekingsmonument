@@ -1,6 +1,6 @@
 ---
 import { siteConfig } from '../config';
-import { languages, languagesList, type Lang } from '../i18n/ui';
+import { languages, langSwitcherOrder, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -11,10 +11,16 @@ const h = messages.header;
 
 const navItems = [
   { label: h.home, href: '#home' },
+  { label: h.weather, href: '#weather' },
   { label: h.about, href: '#about' },
+  { label: h.stories, href: '#stories' },
   { label: h.history, href: '#history' },
+  { label: h.seasons, href: '#seasons' },
+  { label: h.routes, href: '#routes' },
   { label: h.guide, href: '#guide' },
+  { label: h.facilities, href: '#facilities' },
   { label: h.food, href: '#food' },
+  { label: h.responsibility, href: '#responsibility' },
   { label: h.gallery, href: '#gallery' },
   { label: h.reviews, href: '#reviews' },
   { label: h.map, href: '#map' },
@@ -24,29 +30,33 @@ const switchTo = (target: Lang) => `/${target}/`;
 ---
 
 <header class="fixed top-0 inset-x-0 z-50 bg-teak/90 backdrop-blur-md border-b border-gold/20">
-  <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center gap-4">
     <a href={`/${lang}/`} class="font-display text-goldBright tracking-wide text-lg whitespace-nowrap">
       {siteConfig.name[lang]}
     </a>
 
-    <nav class="hidden lg:flex items-center gap-6 text-sm text-ivory/80">
+    <nav class="no-scrollbar hidden lg:flex flex-1 items-center gap-5 overflow-x-auto text-xs xl:text-sm text-ivory/80">
       {navItems.map((item) => (
-        <a href={item.href} class="hover:text-goldBright transition-colors">{item.label}</a>
+        <a href={item.href} class="whitespace-nowrap hover:text-goldBright transition-colors">
+          {item.label}
+        </a>
       ))}
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2 ml-auto lg:ml-0">
       <div class="flex items-center rounded-full border border-gold/30 overflow-hidden text-xs">
-        {languagesList.map((l) => (
+        {langSwitcherOrder.map((l) => (
           <a
             href={switchTo(l)}
+            hreflang={l}
+            aria-current={l === lang ? 'true' : undefined}
             class={`px-2.5 py-1 transition-colors ${l === lang ? 'bg-gold text-teak font-semibold' : 'text-ivory/80 hover:text-goldBright'}`}
           >
             {languages[l]}
           </a>
         ))}
       </div>
-      <button id="menu-btn" class="lg:hidden text-ivory p-2" aria-label="Menu">
+      <button id="menu-btn" class="lg:hidden text-ivory p-2" aria-label="Menu" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 7h16M4 12h16M4 17h16" />
         </svg>
@@ -54,7 +64,7 @@ const switchTo = (target: Lang) => `/${target}/`;
     </div>
   </div>
 
-  <nav id="mobile-menu" class="hidden lg:hidden border-t border-gold/20 bg-teakDeep">
+  <nav id="mobile-menu" class="hidden lg:hidden border-t border-gold/20 bg-teakDeep max-h-[70vh] overflow-y-auto">
     <div class="max-w-7xl mx-auto px-5 py-3 grid grid-cols-2 gap-2 text-sm text-ivory/80">
       {navItems.map((item) => (
         <a href={item.href} class="py-1.5 hover:text-goldBright transition-colors">{item.label}</a>
@@ -67,6 +77,8 @@ const switchTo = (target: Lang) => `/${target}/`;
   const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+    if (!menu) return;
+    menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
   });
 </script>
