@@ -17,6 +17,8 @@ interface Props {
   faqs?: FaqItem[];
   /** Policy pages stay reachable but out of the index (see LegalDoc). */
   noindex?: boolean;
+  /** Restrict hreflang alternates to a subset of locales (used by en-only sub-pages). */
+  alternateLocales?: Lang[];
 }
 const {
   lang,
@@ -25,6 +27,7 @@ const {
   schemaDescription = description,
   faqs = [],
   noindex = false,
+  alternateLocales = languagesList,
 } = Astro.props;
 
 /* ── SEO entity binding ({{DOMAIN_NAME}} … {{GOVT_TOURISM_URL}}) ───────────── */
@@ -33,6 +36,9 @@ const base = siteConfig.domain;
 // declare the home page as canonical, which contradicts the page itself.
 const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = `${base}${pathname}`;
+// Path after the language segment (e.g. 'history/' for /en/history/), so hreflang
+// points at the matching sub-page in every language. Empty for home pages.
+const pathSeg = pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '').replace(/^\//, '');
 const e = siteConfig.entity;
 const fullName = e.fullName[lang];
 const shortName = e.shortName[lang];
@@ -186,10 +192,10 @@ const jsonLd = [
     <meta name="geo.placename" content={city} />
     <meta name="geo.position" content={`${siteConfig.coords.lat};${siteConfig.coords.lng}`} />
     <meta name="ICBM" content={`${siteConfig.coords.lat}, ${siteConfig.coords.lng}`} />
-    {languagesList.map((l) => (
-      <link rel="alternate" hreflang={htmlLang[l]} href={`${base}/${l}/`} />
+    {alternateLocales.map((l) => (
+      <link rel="alternate" hreflang={htmlLang[l]} href={`${base}/${l}/${pathSeg}`} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`${base}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${base}/en/${pathSeg}`} />
 
     <!-- PWA -->
     <link rel="manifest" href="/manifest.webmanifest" />

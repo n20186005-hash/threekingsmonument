@@ -5,6 +5,7 @@ import { getWeather } from '../../lib/weather';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Hero from '../../components/Hero.astro';
+import Essentials from '../../components/Essentials.astro';
 import Weather from '../../components/Weather.astro';
 import SundayStatus from '../../components/SundayStatus.astro';
 import About from '../../components/About.astro';
@@ -29,6 +30,8 @@ if (!requested || !languagesList.includes(requested as Lang)) {
 }
 
 const { lang, messages } = await getI18n(Astro.url);
+// English-only deep-dive sub-pages (history / visiting-guide / nearby-attractions).
+const topics = lang === 'en' ? (messages as any).topics : null;
 
 // One snapshot per request, shared by the hero strip and the forecast section.
 const weather = await getWeather();
@@ -44,15 +47,34 @@ const weather = await getWeather();
   <Header lang={lang} messages={messages} />
   <main>
     <Hero lang={lang} messages={messages} weather={weather} />
-    <Weather lang={lang} messages={messages} weather={weather} />
+    <Essentials messages={messages} />
     <SundayStatus messages={messages} />
     <About messages={messages} />
     <Stories messages={messages} />
+    <Weather lang={lang} messages={messages} weather={weather} />
     <History messages={messages} />
     <Landmarks lang={lang} messages={messages} />
     <Seasons messages={messages} />
     <Routes messages={messages} />
     <Guide messages={messages} />
+    {topics && (
+      <section id="guides" class="guides-band">
+        <div class="guides-inner">
+          <h2>{topics.linksHeading}</h2>
+          <ul class="guides-grid">
+            <li>
+              <a href="/en/history/"><strong>{topics.history.h1}</strong><span>{topics.history.intro}</span></a>
+            </li>
+            <li>
+              <a href="/en/visiting-guide/"><strong>{topics.visitingGuide.h1}</strong><span>{topics.visitingGuide.intro}</span></a>
+            </li>
+            <li>
+              <a href="/en/nearby-attractions/"><strong>{topics.nearbyAttractions.h1}</strong><span>{topics.nearbyAttractions.intro}</span></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    )}
     <Facilities messages={messages} />
     <Food messages={messages} />
     <Responsibility messages={messages} />
@@ -62,4 +84,61 @@ const weather = await getWeather();
     <SourcesSection lang={lang} messages={messages} />
   </main>
   <Footer lang={lang} messages={messages} />
+
+  <style>
+    .guides-band {
+      background: var(--surface, #f6f7f9);
+      border-top: 1px solid var(--border, #e7e7ea);
+      padding: 2.5rem 0;
+    }
+    .guides-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    .guides-band h2 {
+      font-size: 1.4rem;
+      margin: 0 0 1.25rem;
+      color: var(--text, #1f2430);
+    }
+    .guides-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    .guides-grid a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      height: 100%;
+      padding: 1.2rem;
+      border: 1px solid var(--border, #e7e7ea);
+      border-radius: 14px;
+      background: var(--card, #fff);
+      text-decoration: none;
+      color: var(--text, #1f2430);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .guides-grid a:hover {
+      border-color: var(--accent, #b45309);
+      transform: translateY(-2px);
+    }
+    .guides-grid strong {
+      font-size: 1.05rem;
+      color: var(--accent, #b45309);
+    }
+    .guides-grid span {
+      font-size: 0.9rem;
+      color: var(--muted, #6b7280);
+      line-height: 1.6;
+    }
+    @media (max-width: 820px) {
+      .guides-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </BaseLayout>

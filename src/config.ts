@@ -122,10 +122,13 @@ export const siteConfig = {
   },
 
   // Google Maps snapshot — re-synced manually from the official Google Maps listing
+  // (see the independent note in the footer / reviews section). The number is
+  // shown for context only; for the always-current count, visitors should open
+  // the Google Maps listing via the link on the page.
   rating: '4.3',
-  reviewCount: '9,034',
+  reviewCount: '9,066',
   // 同步月份（用于评分与评价数的来源说明）
-  reviewSync: '2026-09',
+  reviewSync: '2026-10',
 
   category: {
     th: 'อนุสาวรีย์',

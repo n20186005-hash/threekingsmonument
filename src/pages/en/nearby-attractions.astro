@@ -1,0 +1,11 @@
+---
+import { getI18n } from '../../i18n/ui';
+import TopicPage from '../../components/TopicPage.astro';
+
+export const prerender = true;
+
+const { messages } = await getI18n(Astro.url);
+const topic = (messages as any).topics.nearbyAttractions;
+---
+
+<TopicPage topic={topic} messages={messages} />

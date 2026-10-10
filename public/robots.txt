@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://threekingsmonument.com/sitemap.xml
