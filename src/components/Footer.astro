@@ -8,12 +8,12 @@ interface Props {
 const { lang, messages } = Astro.props;
 const footer = messages.footer;
 const disclaimer: Record<Lang, string> = {
-  zh: '本网站是一个独立的旅游信息项目。我们与任何政府机构或官方组织均无关联。',
+  zh: '本网站是一个独立的旅游信息项目，与任何政府机构或官方组织均无关联',
   en: 'This is an independent tourism information project. We are not affiliated with any government agency or official organization.',
   th: 'เว็บไซต์นี้เป็นโครงการข้อมูลการท่องเที่ยวอิสระ ไม่มีความเกี่ยวข้องกับหน่วยงานรัฐบาลหรือองค์กรทางการใด ๆ',
 };
 const rights: Record<Lang, string> = {
-  zh: '版權所有',
+  zh: '版权所有',
   en: 'All rights reserved',
   th: 'สงวนลิขสิทธิ์',
 };
@@ -27,7 +27,7 @@ const imageLink: Record<Lang, string> = {
 <footer class="bg-teakDeep text-ivory py-8">
   <div class="max-w-7xl mx-auto px-5 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
     <div class="text-sm text-ivory/75 space-y-2 max-w-2xl">
-      <p>© 2026 {footer.brand.name} · {rights[lang]}。</p>
+      <p>© 2026 {footer.brand.name} ·{rights[lang]}</p>
       <p>{disclaimer[lang]}</p>
     </div>
     <nav aria-label={footer.sourcesTitle} class="flex flex-wrap gap-x-5 gap-y-2 text-sm md:justify-end md:text-right">
