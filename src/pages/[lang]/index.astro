@@ -59,6 +59,15 @@ const weather = await getWeather();
   <Header lang={lang} messages={messages} />
   <main>
     <Hero lang={lang} messages={messages} weather={weather} />
+    <section aria-label={lang === 'zh' ? '三十二篇旅游专题入口' : lang === 'th' ? 'ทางเข้าคู่มือท่องเที่ยว 32 เรื่อง' : '32 travel guides'} class="bg-teakDeep border-t border-gold/25">
+      <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h2 class="font-display text-xl md:text-2xl text-goldBright">{lang === 'zh' ? '清迈古城 · 32 篇深度专题' : lang === 'th' ? 'เมืองเก่าเชียงใหม่ · คู่มือเจาะลึก 32 เรื่อง' : 'Chiang Mai Old City · 32 In-depth Guides'}</h2>
+          <p class="text-sm text-ivory/75 mt-1">{lang === 'zh' ? '周边景点、历史文化、交通路线与实用旅行建议。' : lang === 'th' ? 'สถานที่ใกล้เคียง ประวัติศาสตร์ เส้นทาง และคำแนะนำเที่ยว' : 'Nearby places, history, walking routes and practical travel tips.'}</p>
+        </div>
+        <a href={`/${lang}/explore/`} class="inline-flex shrink-0 items-center justify-center rounded-full bg-gold px-6 py-3 font-semibold text-teak hover:bg-goldBright transition-colors">{lang === 'zh' ? '查看全部 32 篇专题 →' : lang === 'th' ? 'ดูคู่มือทั้งหมด 32 เรื่อง →' : 'Explore all 32 guides →'}</a>
+      </div>
+    </section>
     <Essentials messages={messages} />
     <SundayStatus messages={messages} />
     <About messages={messages} />
