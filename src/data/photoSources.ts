@@ -14,3 +14,7 @@ export const photoSources: Record<string, string> = {
   'wat-buppharam': 'Wat Buppharam, Chiang Mai.jpg',
   'chiang-mai-night-bazaar': 'Chiang Mai Night Bazaar.jpg',
 };
+export const otherPhotoSources: Record<string, { file: string; source: string }> = {
+  'chiang-mai-historical-centre': { file: 'chiang-mai-historical-centre.webp', source: 'https://mindtrip.ai/attraction/chiang-mai/chiang-mai-historical-centre/at-dUIBf7bL' },
+  'chiang-mai-gate-market': { file: 'chiang-mai-gate-market.jpg', source: 'https://www.getyourguide.com/chiang-mai-gate-market-l228704/' },
+};

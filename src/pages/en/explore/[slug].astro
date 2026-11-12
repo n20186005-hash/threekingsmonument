@@ -5,16 +5,16 @@ import Footer from '../../../components/Footer.astro';
 import { getI18n } from '../../../i18n/ui';
 import { expansion, type Expansion } from '../../../data/expansion';
 import { placeDetails } from '../../../data/placeDetails';
-import { photoSources } from '../../../data/photoSources';
+import { photoSources, otherPhotoSources } from '../../../data/photoSources';
 import { siteConfig } from '../../../config';
 export const prerender = true;
 export function getStaticPaths() { return expansion.map(item => ({ params: { slug: item.slug }, props: { item } })); }
 const { item } = Astro.props as { item: Expansion };
 const { messages } = await getI18n(Astro.url);
 const details = placeDetails[item.slug];
-const image = item.kind === 'place' ? `/explore/${item.slug}.jpg` : '/gallery/three-kings-monument-1.jpg';
-const availableImage = item.kind !== 'place' || Boolean(photoSources[item.slug]);
-const photoSource = photoSources[item.slug] ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(photoSources[item.slug].replaceAll(' ', '_'))}` : undefined;
+const image = item.kind === 'place' ? `/explore/${otherPhotoSources[item.slug]?.file ?? `${item.slug}.jpg`}` : '/gallery/three-kings-monument-1.jpg';
+const availableImage = item.kind !== 'place' || Boolean(photoSources[item.slug] || otherPhotoSources[item.slug]);
+const photoSource = photoSources[item.slug] ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(photoSources[item.slug].replaceAll(' ', '_'))}` : otherPhotoSources[item.slug]?.source;
 const maps = item.kind === 'place'
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${item.name}, Chiang Mai, Thailand`)}`
   : siteConfig.mapsUrl;

@@ -96,13 +96,13 @@ const weather = await getWeather();
         <p class="mb-6 text-slate-600">{nearbyIntro}</p>
         <ul class="guides-grid">
           {nearbyPicks.map(item => <li>
-            <a href={`/en/explore/${item.slug}/`} hreflang="en">
+            <a href={`/${lang}/explore/${item.slug}/`} hreflang={lang}>
               <strong>{nearbyLabels[item.slug][lang === 'th' ? 0 : lang === 'zh' ? 2 : 1]}</strong>
-              <span>{lang === 'en' ? item.summary : lang === 'th' ? 'ดูข้อมูลสถานที่ เส้นทาง และแผนที่ (ภาษาอังกฤษ)' : '查看景点历史、路线及地图（英文页面）'}</span>
+              <span>{lang === 'en' ? item.summary : lang === 'th' ? 'ดูข้อมูลสถานที่ เส้นทาง และแผนที่' : '查看景点历史、路线及地图'}</span>
             </a>
           </li>)}
         </ul>
-        <p class="mt-5"><a class="underline text-amber-800 font-semibold" href="/en/explore/">{lang === 'th' ? 'ดูคู่มือทั้งหมด 32 เรื่อง (ภาษาอังกฤษ)' : lang === 'zh' ? '查看全部 32 篇攻略（英文）' : 'View all 32 guides →'}</a></p>
+        <p class="mt-5"><a class="underline text-amber-800 font-semibold" href={`/${lang}/explore/`}>{lang === 'th' ? 'ดูคู่มือทั้งหมด 32 เรื่อง' : lang === 'zh' ? '查看全部 32 篇攻略' : 'View all 32 guides →'}</a></p>
       </div>
     </section>
     <Facilities messages={messages} />

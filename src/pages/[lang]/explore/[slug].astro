@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getI18n } from '../../../i18n/ui';
+import { expansion } from '../../../data/expansion';
+import { thTranslations, zhTranslations } from '../../../data/translated';
+import { photoSources, otherPhotoSources } from '../../../data/photoSources';
+import { siteConfig } from '../../../config';
+export const prerender = true;
+export function getStaticPaths() { return ['th','zh'].flatMap(lang=>expansion.map(item=>({params:{lang,slug:item.slug},props:{item}}))); }
+const lang = Astro.params.lang as 'th'|'zh';
+const {item} = Astro.props;
+const {messages} = await getI18n(Astro.url);
+const t = (lang === 'th' ? thTranslations : zhTranslations)[item.slug];
+const mapUrl = item.kind === 'place' ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${item.name}, Chiang Mai, Thailand`)}` : siteConfig.mapsUrl;
+const imageFile = otherPhotoSources[item.slug]?.file ?? `${item.slug}.jpg`;
+const image = item.kind === 'place' ? `/explore/${imageFile}` : '/gallery/three-kings-monument-1.jpg';
+const imageSource = photoSources[item.slug] ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(photoSources[item.slug].replaceAll(' ', '_'))}` : otherPhotoSources[item.slug]?.source;
+const labels = lang === 'th' ? {
+  category:'คู่มือเที่ยวเมืองเก่า', map:'ดูตำแหน่งบน Google Maps', all:'คู่มือทั้งหมด', discover:'สำรวจ', management:'เกี่ยวกับสถานที่และผู้ดูแล', info:'ข้อมูลเบื้องต้น', area:'พื้นที่', type:'ประเภท', hours:'เวลาเปิด', tickets:'ค่าเข้าชม', check:'ตรวจสอบประกาศของสถานที่ก่อนเดินทาง', guide:'เส้นทางแนะนำ', history:'ประวัติ สถาปัตยกรรม และจุดสังเกต', route:'เส้นทางเดินชม', tips:'ข้อควรรู้ก่อนเที่ยว', photography:'มุมถ่ายภาพ', stay:'อาหารและที่พัก', nav:'วิธีเดินทางและแผนที่', faq:'คำถามที่พบบ่อย', related:'เที่ยวต่อใกล้เคียง', source:'แหล่งข้อมูล', photoSource:'ที่มาภาพ', place:'สถานที่ท่องเที่ยว', itinerary:'คำแนะนำเที่ยวด้วยตนเอง',
+} : {
+  category:'清迈古城游览指南',map:'在 Google 地图查看位置',all:'全部攻略',discover:'探索',management:'关于景点与管理主体',info:'基本资料',area:'所在地区',type:'景点类型',hours:'开放时间',tickets:'门票',check:'出发前核对场馆公告',guide:'自助行程',history:'历史、建筑与观察重点',route:'推荐步行路线',tips:'游览须知',photography:'摄影机位',stay:'餐饮与住宿建议',nav:'交通与地图导航',faq:'常见问答',related:'继续探索周边',source:'资料来源',photoSource:'照片来源',place:'旅游景点',itinerary:'自助游览攻略',
+};
+const management = item.kind === 'guide'
+  ? (lang === 'th' ? 'บทความนี้เป็นแผนเที่ยวด้วยตนเอง ไม่ใช่สถานที่ที่มีผู้ดูแลแยกต่างหาก พิพิธภัณฑ์ วัด และตลาดแต่ละแห่งมีผู้รับผิดชอบต่างกัน ควรตรวจสอบประกาศของสถานที่นั้นโดยตรง' : '本页是以三王纪念碑为起点的自助游览攻略，并非单独由某机构管理的景点。沿途博物馆、寺庙和市场各有管理方，请以各处公告为准。')
+  : ['chiang-mai-city-arts-cultural-centre','lanna-folklife-museum','chiang-mai-historical-centre'].includes(item.slug)
+    ? (lang === 'th' ? 'สถานที่นี้อยู่ในเครือศูนย์มรดกเมืองเชียงใหม่ของเทศบาลนครเชียงใหม่ ซึ่งดูแลนิทรรศการและข้อมูลผู้เข้าชม โปรดติดตามประกาศอย่างเป็นทางการของศูนย์' : '该馆属于清迈市政府 City Heritage Centre 博物馆网络，展览及访客资讯由市政文化机构管理。请查看官方开放公告。')
+    : item.slug.startsWith('wat-')
+      ? (lang === 'th' ? 'วัดแห่งนี้ยังเป็นศาสนสถานที่ประกอบพิธีจริง การเข้าชมและกิจกรรมทางศาสนาอยู่ภายใต้การดูแลของคณะสงฆ์และเจ้าหน้าที่วัด โปรดปฏิบัติตามประกาศ' : '这里是仍在使用的佛教寺院，宗教仪式和访客动线由寺院僧团及现场人员安排，请遵守公告。')
+      : (lang === 'th' ? 'พื้นที่สาธารณะหรือตลาดแห่งนี้มีผู้จัดการพื้นที่ ผู้ค้า หรือหน่วยงานท้องถิ่นรับผิดชอบต่างกัน โปรดดูประกาศที่สถานที่จริง' : '该公共空间或市场涉及不同商户、场地经营方及地方公共管理机构，具体活动与管理安排请以现场公告为准。');
+const shared = lang === 'th' ? {
+  context:'สถานที่นี้ช่วยให้เข้าใจความเชื่อมโยงระหว่างประวัติเมืองล้านนา สถาปัตยกรรม และชีวิตร่วมสมัยของเชียงใหม่ สังเกตรายละเอียดตามจุดที่แนะนำและใช้ข้อมูลพิพิธภัณฑ์หรือป้ายสถานที่ประกอบ',
+  transport:'การเดินทางในเมืองเก่าสามารถใช้การเดินหรือรถท้องถิ่น ตรวจสอบจุดจอดรถและการปิดถนนในวันเดินทาง ใช้ทางข้ามที่ปลอดภัย',
+  lodging:'เมืองเก่าเชียงใหม่มีร้านอาหาร คาเฟ่ และที่พักหลายประเภท เลือกจากระยะทาง เส้นทางเดิน และงบประมาณ ตรวจสอบราคาและเวลาเปิดของแต่ละร้าน',
+  fee:'ตรวจสอบค่าบัตรและเงื่อนไขกับสถานที่จริง',
+  faq1:'ควรตรวจสอบเวลาเปิดอย่างไร?',faqA1:'ตรวจสอบเว็บไซต์หรือป้ายประกาศของสถานที่ในวันเดินทาง เวลาเปิดอาจเปลี่ยนเพราะงานหรือพิธี',faq2:'รวมกับอนุสาวรีย์สามกษัตริย์ได้หรือไม่?',faqA2:'ได้ ใช้เส้นทางแนะนำและปรับตามอากาศ เวลา และความสามารถในการเดิน',
+} : {
+  context:'这处地点或路线有助于把兰纳古城历史、建筑与今日生活联系起来。请观察上文介绍的独特细节，并结合博物馆解说或现场资料理解。',
+  transport:'古城适合安排步行或当地交通，驾驶时核实停车及临时封路情况，并使用安全过街设施。',
+  lodging:'清迈古城周围有不同餐厅、咖啡馆和住宿。建议根据路线、交通与预算选择，价格及营业情况以各商家当日信息为准。',
+  fee:'门票与优惠条件请以各场馆公告为准',
+  faq1:'如何核实开放时间？',faqA1:'出发当天查看景点官网或现场公告，活动、维修及宗教仪式可能改变开放安排。',faq2:'可以和三王纪念碑安排在一起吗？',faqA2:'可以，按推荐路线串联，并根据天气、时间和步行能力调整。',
+};
+const faq = [{q:shared.faq1,a:shared.faqA1},{q:shared.faq2,a:shared.faqA2}];
+---
+<BaseLayout lang={lang} title={`${t.name} | ${lang==='th'?'คู่มือเชียงใหม่':'清迈旅游指南'}`} description={t.intro} faqs={faq} alternateLocales={['th','zh','en']}>
+  <Header lang={lang} messages={messages}/>
+  <main class="text-slate-800">
+    <section class="bg-amber-950 text-white pt-28 pb-16 px-5"><div class="max-w-5xl mx-auto">
+      <nav class="text-sm text-amber-200 mb-7"><a class="underline" href={`/${lang}/`}>{siteConfig.name[lang]}</a> / <a class="underline" href={`/${lang}/explore/`}>{labels.all}</a></nav>
+      <span class="text-amber-300">{labels.category}</span><h1 class="text-4xl md:text-5xl font-bold mt-3 mb-6">{t.name}</h1>
+      <p class="text-xl leading-8 max-w-3xl">{t.intro}</p>
+      <a class="inline-block bg-amber-400 text-amber-950 rounded-lg px-5 py-3 font-semibold mt-7" href={mapUrl} target="_blank" rel="noopener noreferrer">{labels.map} ↗</a>
+    </div></section>
+    <article class="max-w-5xl mx-auto px-5 py-12 space-y-10 leading-8">
+      <section><h2 class="text-2xl font-bold mb-3">{labels.discover} {t.name}</h2><p>{t.focus}</p>
+        <figure class="mt-6"><img src={image} alt={t.name} loading="lazy" class="w-full max-h-[470px] object-cover rounded-xl"/><figcaption class="text-sm text-slate-500 mt-2">{t.name} {imageSource && <a href={imageSource} class="underline" target="_blank" rel="noopener noreferrer">{labels.photoSource}</a>}</figcaption></figure>
+      </section>
+      <section class="bg-amber-50 rounded-2xl p-7"><h2 class="text-2xl font-bold mb-3">{labels.management}</h2><p>{management}</p><p class="mt-3">{t.focus}</p></section>
+      <section><h2 class="text-2xl font-bold mb-4">{labels.info}</h2><dl class="grid sm:grid-cols-2 gap-3"><div class="border rounded-lg p-4"><dt class="font-bold">{labels.area}</dt><dd>{lang==='th'?'เมืองเชียงใหม่ ประเทศไทย':'泰国清迈'}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.type}</dt><dd>{item.kind==='place'?labels.place:labels.itinerary}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.hours}</dt><dd>{labels.check}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.tickets}</dt><dd>{shared.fee}</dd></div></dl></section>
+      <section><h2 class="text-2xl font-bold mb-3">{labels.history}</h2><p>{t.focus}</p><p class="mt-3">{shared.context}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">{labels.route}</h2><ol class="list-decimal ml-6 space-y-3"><li>{lang==='th'?'เริ่มที่อนุสาวรีย์สามกษัตริย์และดูทิศทางเมืองเก่า':'从三王纪念碑出发，先熟悉古城方向。'}</li><li>{t.route}</li><li>{lang==='th'?'เผื่อเวลาพักและปรับตามสภาพอากาศ':'预留休息时间，并根据天气调整。'}</li></ol></section>
+      <section><h2 class="text-2xl font-bold mb-3">{labels.tips}</h2><p>{t.tip}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">{labels.photography}</h2><p>{t.photo}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">{labels.stay}</h2><p>{shared.lodging}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">{labels.nav}</h2><p>{shared.transport}</p><a class="underline text-amber-800 font-semibold" href={mapUrl} target="_blank" rel="noopener noreferrer">{labels.map} ↗</a></section>
+      <section><h2 class="text-2xl font-bold mb-4">{labels.faq}</h2>{faq.map(f=><details class="border rounded-lg p-4 mb-3"><summary class="font-semibold cursor-pointer">{f.q}</summary><p class="mt-3">{f.a}</p></details>)}</section>
+      <section><h2 class="text-2xl font-bold mb-4">{labels.related}</h2><ul class="grid sm:grid-cols-2 gap-3">{expansion.filter(x=>x.kind==='place'&&x.slug!==item.slug).slice(0,4).map(p=><li class="border rounded-lg p-4"><a class="text-amber-800 underline font-semibold" href={`/${lang}/explore/${p.slug}/`}>{(lang==='th'?thTranslations:zhTranslations)[p.slug].name}</a></li>)}</ul><a class="underline mt-4 inline-block" href={`/${lang}/explore/`}>{labels.all}</a></section>
+      <section class="text-sm text-slate-600 border-t pt-5"><h2 class="font-bold text-base mb-2">{labels.source}</h2><a class="underline" href="https://www.chiangmai.go.th/english/index.php/welcome/tourism">{lang==='th'?'ข้อมูลท่องเที่ยวจังหวัดเชียงใหม่':'清迈府旅游资料'}</a> · <a class="underline" href="https://cmocity.com/">City Heritage Centre</a></section>
+    </article>
+  </main><Footer lang={lang} messages={messages}/>
+</BaseLayout>

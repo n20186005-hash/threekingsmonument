@@ -17,13 +17,16 @@ const home: { loc: string; alts: { hreflang: string; href: string }[] }[] = lang
 // English-only deep-dive pages (translations pending).
 const subpages = ['history', 'visiting-guide', 'nearby-attractions', 'explore', ...expansion.map(p => `explore/${p.slug}`)].map((slug) => ({
   loc: `${base}/en/${slug}/`,
-  alts: [
-    { hreflang: 'en', href: `${base}/en/${slug}/` },
-    { hreflang: 'x-default', href: `${base}/en/${slug}/` },
-  ],
+  alts: slug === 'explore' || slug.startsWith('explore/')
+    ? [...langs.map(l=>({hreflang:l,href:`${base}/${l}/${slug}/`})),{hreflang:'x-default',href:`${base}/en/${slug}/`}]
+    : [{ hreflang: 'en', href: `${base}/en/${slug}/` },{ hreflang: 'x-default', href: `${base}/en/${slug}/` }],
 }));
 
-const urls = [...home, ...subpages];
+const translatedSubpages = ['th','zh'].flatMap(lang => ['explore', ...expansion.map(p=>`explore/${p.slug}`)].map(slug=>({
+  loc:`${base}/${lang}/${slug}/`,
+  alts:[...langs.map(l=>({hreflang:l,href:`${base}/${l}/${slug}/`})),{hreflang:'x-default',href:`${base}/en/${slug}/`}],
+})));
+const urls = [...home, ...subpages, ...translatedSubpages];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

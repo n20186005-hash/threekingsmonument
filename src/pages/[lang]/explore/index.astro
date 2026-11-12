@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getI18n } from '../../../i18n/ui';
+import { expansion } from '../../../data/expansion';
+import { thTranslations, zhTranslations } from '../../../data/translated';
+export const prerender = true;
+export function getStaticPaths() { return ['th','zh'].map(lang => ({params:{lang}})); }
+const lang = Astro.params.lang as 'th'|'zh';
+const { messages } = await getI18n(Astro.url);
+const entries = lang === 'th' ? thTranslations : zhTranslations;
+const heading = lang === 'th' ? 'เที่ยวเมืองเก่าเชียงใหม่: 32 คู่มือ' : '探索清迈古城：32 篇游览指南';
+const intro = lang === 'th' ? 'จากอนุสาวรีย์สามกษัตริย์ สำรวจพิพิธภัณฑ์ วัด ตลาด ประวัติศาสตร์ และเส้นทางเที่ยวแบบละเอียด' : '从三王纪念碑出发，探索博物馆、寺庙、市场、历史与实用路线。';
+---
+<BaseLayout lang={lang} title={`${heading} | Three Kings Monument`} description={intro} alternateLocales={['th','zh','en']}>
+  <Header lang={lang} messages={messages}/>
+  <main class="mx-auto max-w-6xl px-5 pt-28 pb-20 text-slate-800">
+    <nav class="text-sm mb-5"><a class="underline" href={`/${lang}/`}>{messages.meta.title}</a> / {heading}</nav>
+    <h1 class="text-4xl font-bold mb-5">{heading}</h1><p class="leading-8 mb-10">{intro}</p>
+    {(['place','guide'] as const).map(kind => <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">{lang === 'th' ? (kind === 'place' ? 'สถานที่ใกล้เคียง' : 'ประวัติและแผนเที่ยว') : (kind === 'place' ? '周边景点' : '历史与实用攻略')}</h2>
+      <ul class="grid gap-4 md:grid-cols-3">{expansion.filter(x=>x.kind===kind).map(item => <li class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"><a class="font-bold text-amber-800 underline" href={`/${lang}/explore/${item.slug}/`}>{entries[item.slug].name}</a><p class="text-sm mt-3 leading-6">{entries[item.slug].intro}</p></li>)}</ul>
+    </section>)}
+  </main><Footer lang={lang} messages={messages}/>
+</BaseLayout>
