@@ -121,8 +121,8 @@
     "cta1": "Start Exploring",
     "cta2": "Explore Around →",
     "rating": "4.3",
-    "reviewCount": "9,066",
-    "reviewSource": "Rating and review count synced from Google Maps user reviews · October 2026 · See all reviews on Google Maps ↗",
+    "reviewCount": "9,112",
+    "reviewSource": "Rating and review count synced from Google Maps user reviews · November 2026 · See all reviews on Google Maps ↗",
     "liveWeather": "Live Weather",
     "liveSunset": "Sunset",
     "loading": "Loading live data from the monument's real coordinates…",
@@ -337,7 +337,7 @@
     "label": "— 07 · Visitor Reviews —",
     "heading": "Voices of Visitors",
     "intro": "How travellers from around the world rate the Three Kings Monument.",
-    "declaration": "Synced from Google Maps user reviews, sync date October 2026; copyright belongs to the original authors and Google Maps.",
+    "declaration": "Synced from Google Maps user reviews, sync date November 2026; copyright belongs to the original authors and Google Maps.",
     "featured": [
       { "text": "A core landmark of Chiang Mai's old city — everyone should visit at least once.", "source": "— Google Review" },
       { "text": "Beautiful sculpture rich in history, surrounded by a charming old-city atmosphere.", "source": "— TripAdvisor" }
@@ -353,8 +353,8 @@
       { "name": "Niran R.", "date": "Aug 2025", "rating": "4.5", "text": "Not to be missed for those interested in Lanna history and culture." }
     ],
     "viewLocation": "See all reviews on Google Maps",
-    "sourceSync": "Rating and review count synced from Google Maps user reviews · October 2026 · See all reviews on Google Maps↗",
-    "disclaimer": "Google Maps aggregate rating 4.3, based on 9,066 reviews."
+    "sourceSync": "Rating and review count synced from Google Maps user reviews · November 2026 · See all reviews on Google Maps↗",
+    "disclaimer": "Google Maps aggregate rating 4.3, based on 9,112 reviews."
   },
   "mapSection": {
     "label": "— 08 · Location & Transport —",
@@ -393,8 +393,8 @@
     "intro": "Historical facts, coordinates, opening hours and the rating on this page are compiled from the reliable sources below, to support the page's expertise, authoritativeness and trustworthiness (E-E-A-T).",
     "officialTitle": "Authoritative sources",
     "reviewTitle": "Reviews",
-    "reviewSync": "Reviews · synced October 2026",
-    "reviewNote": "Synced from Google Maps user reviews, sync date October 2026; copyright belongs to the original authors and Google Maps.",
+    "reviewSync": "Reviews · synced November 2026",
+    "reviewNote": "Synced from Google Maps user reviews, sync date November 2026; copyright belongs to the original authors and Google Maps.",
     "reviewLink": "See all reviews on Google Maps",
     "imageRightsTitle": "Image rights",
     "imageRights": "Image rights: all images displayed on this website remain the property and copyright of their original photographers.",
@@ -438,8 +438,8 @@
     "transparencyTitle": "Transparency & Public Benefit",
     "transparency": "This site operates as an independent, non-profit educational resource, sharing Lanna history with the public.",
     "imageCopyright": "Image rights: all images displayed on this website remain the property and copyright of their original photographers.",
-    "reviewSyncTag": "Reviews · synced October 2026",
-    "reviewSyncNote": "Synced from Google Maps user reviews, sync date October 2026; copyright belongs to the original authors and Google Maps."
+    "reviewSyncTag": "Reviews · synced November 2026",
+    "reviewSyncNote": "Synced from Google Maps user reviews, sync date November 2026; copyright belongs to the original authors and Google Maps."
   },
   "legal": {
     "privacy": {
