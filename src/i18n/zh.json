@@ -53,8 +53,8 @@
     "cta1": "开始参观",
     "cta2": "探索周边 →",
     "rating": "4.3",
-    "reviewCount": "9,066",
-    "reviewSource": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 10 月 · 点击查看谷歌地图全部评价↗",
+    "reviewCount": "9,112",
+    "reviewSource": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 11 月 · 点击查看谷歌地图全部评价↗",
     "liveWeather": "实时天气",
     "liveSunset": "日落",
     "loading": "正在从景点真实坐标加载实时数据…",
@@ -269,7 +269,7 @@
     "label": "— 07 · 游客评价 —",
     "heading": "游客的声音",
     "intro": "来自世界各地的旅行者如何评价三王纪念碑。",
-    "declaration": "同步自 Google 地图用户评价，同步时间 2026 年 10 月；版权归原作者与 Google 地图所有。",
+    "declaration": "同步自 Google 地图用户评价，同步时间 2026 年 11 月；版权归原作者与 Google 地图所有。",
     "featured": [
       { "text": "清迈古城的核心地标，每个人至少都该来一次。", "source": "— Google 评价" },
       { "text": "雕塑优美且富有历史意义，四周环绕着迷人的古城氛围。", "source": "— TripAdvisor" }
@@ -285,7 +285,7 @@
       { "name": "Niran R.", "date": "2025年8月", "rating": "4.5", "text": "对兰纳历史与文化感兴趣者不可错过。" }
     ],
     "viewLocation": "在谷歌地图查看全部评价",
-    "sourceSync": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 10 月 · 点击查看谷歌地图全部评价↗",
+    "sourceSync": "评分与评价数同步自谷歌地图（Google Maps）用户评价 · 2026 年 11 月 · 点击查看谷歌地图全部评价↗",
     "disclaimer": "Google 地图综合评分 4.3，基于 9,034 条评价。"
   },
   "mapSection": {
@@ -325,8 +325,8 @@
     "intro": "本页的史实、坐标、开放时间与评分评价均整理自下列可靠来源，以强化内容的专业性、权威性与可信度（E-E-A-T）。",
     "officialTitle": "权威来源",
     "reviewTitle": "评价",
-    "reviewSync": "评价 · 同步时间 2026 年 10 月",
-    "reviewNote": "同步自 Google 地图用户评价，同步时间 2026 年 10 月；版权归原作者与 Google 地图所有。",
+    "reviewSync": "评价 · 同步时间 2026 年 11 月",
+    "reviewNote": "同步自 Google 地图用户评价，同步时间 2026 年 11 月；版权归原作者与 Google 地图所有。",
     "reviewLink": "点击查看谷歌地图全部评价",
     "imageRightsTitle": "图片产权",
     "imageRights": "本网站所展示的所有图片产权及版权均归原摄影者所有。",
@@ -370,8 +370,8 @@
     "transparencyTitle": "透明度与公益宗旨",
     "transparency": "本站以独立、非营利的科普资源形式运营，向公众传播兰纳历史。",
     "imageCopyright": "图片产权：本网站所展示的所有图片产权及版权均归原摄影者所有。",
-    "reviewSyncTag": "评价 · 同步时间 2026 年 10 月",
-    "reviewSyncNote": "同步自 Google 地图用户评价，同步时间 2026 年 10 月；版权归原作者与 Google 地图所有。"
+    "reviewSyncTag": "评价 · 同步时间 2026 年 11 月",
+    "reviewSyncNote": "同步自 Google 地图用户评价，同步时间 2026 年 11 月；版权归原作者与 Google 地图所有。"
   },
   "legal": {
     "privacy": {
