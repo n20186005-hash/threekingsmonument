@@ -59,7 +59,7 @@ const govtUrl = siteConfig.govtTourismUrl;
       </div>
 
       <!-- Image rights + official tourism portal -->
-      <div class="rounded-2xl bg-teakDeep/60 border border-gold/20 p-6">
+      <div id="image-rights" class="rounded-2xl bg-teakDeep/60 border border-gold/20 p-6 scroll-mt-24">
         <h3 class="font-display text-xl text-goldBright mb-3">{s.imageRightsTitle}</h3>
         <p class="text-sm text-ivory/80 leading-relaxed">{s.imageRights}</p>
 
@@ -77,5 +77,25 @@ const govtUrl = siteConfig.govtTourismUrl;
         </p>
       </div>
     </div>
+
+    <!-- Reference bibliography moved here from the footer, keeping all source detail in one section. -->
+    <div class="mt-8 rounded-2xl bg-teakDeep/60 border border-gold/20 p-6">
+      <h3 class="font-display text-xl text-goldBright mb-2">{messages.footer.citationsTitle}</h3>
+      <p class="text-sm text-ivory/75 mb-5">{messages.footer.citationsNote}</p>
+      <ul class="grid md:grid-cols-3 gap-5 text-sm">
+        {messages.footer.citations.map((citation) => (
+          <li class="border-l-2 border-gold/40 pl-4">
+            <div class="font-medium text-ivory">{citation.title}</div>
+            <div class="mt-1 text-ivory/65">{citation.meta}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    {messages.footer.transparency && (
+      <div class="mt-6 rounded-xl bg-teakDeep/50 border border-gold/20 p-6">
+        <h3 class="font-display text-lg text-goldBright mb-2">{messages.footer.transparencyTitle}</h3>
+        <p class="text-sm text-ivory/75">{messages.footer.transparency}</p>
+      </div>
+    )}
   </div>
 </section>
