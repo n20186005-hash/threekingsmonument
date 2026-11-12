@@ -1,8 +1,10 @@
 ---
 interface Props {
   messages: Record<string, any>;
+  lang: 'th' | 'en' | 'zh';
 }
-const { messages } = Astro.props;
+const { messages, lang } = Astro.props;
+const museumSlugs = ['chiang-mai-city-arts-cultural-centre', 'lanna-folklife-museum', 'chiang-mai-historical-centre'];
 const food = messages.food;
 const foodImg = '/gallery/three-kings-monument-5.jpg';
 ---
@@ -15,10 +17,10 @@ const foodImg = '/gallery/three-kings-monument-5.jpg';
 
     <div class="mt-10">
       <div class="grid md:grid-cols-3 gap-4">
-        {food.museums.map((m) => (
+        {food.museums.map((m, index) => (
           <div class="rounded-xl bg-teakDeep/60 border border-gold/20 p-5">
             <div class="text-xs uppercase tracking-wider text-gold mb-2">{m.relation}</div>
-            <h3 class="font-display text-lg text-ivory mb-2">{m.name}</h3>
+            <h3 class="font-display text-lg text-ivory mb-2"><a href={`/${lang}/explore/${museumSlugs[index]}/`} class="hover:text-goldBright underline-offset-4 hover:underline focus-visible:underline">{m.name} <span aria-hidden="true">↗</span></a></h3>
             <p class="text-sm text-ivory/75">{m.desc}</p>
           </div>
         ))}
