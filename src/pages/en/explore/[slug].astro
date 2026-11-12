@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getI18n } from '../../../i18n/ui';
+import { expansion, type Expansion } from '../../../data/expansion';
+import { placeDetails } from '../../../data/placeDetails';
+import { photoSources } from '../../../data/photoSources';
+import { siteConfig } from '../../../config';
+export const prerender = true;
+export function getStaticPaths() { return expansion.map(item => ({ params: { slug: item.slug }, props: { item } })); }
+const { item } = Astro.props as { item: Expansion };
+const { messages } = await getI18n(Astro.url);
+const details = placeDetails[item.slug];
+const image = item.kind === 'place' ? `/explore/${item.slug}.jpg` : '/gallery/three-kings-monument-1.jpg';
+const availableImage = item.kind !== 'place' || Boolean(photoSources[item.slug]);
+const photoSource = photoSources[item.slug] ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(photoSources[item.slug].replaceAll(' ', '_'))}` : undefined;
+const maps = item.kind === 'place'
+  ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${item.name}, Chiang Mai, Thailand`)}`
+  : siteConfig.mapsUrl;
+const nearby = expansion.filter(p => p.slug !== item.slug && p.kind === 'place').slice(0, 4);
+const faq = [
+  { q: `How do I find ${item.name}?`, a: item.kind === 'place' ? `Use the destination-specific Google Maps link below and check the listing before travel.` : `Begin at Three Kings Monument on Phra Pokklao Road and follow the route suggested in this guide.` },
+  { q: 'Are opening hours and admission guaranteed?', a: 'No. Hours, tickets, religious ceremonies and events may change. Check with the individual venue or on-site notices before visiting.' },
+  { q: 'Can this be combined with the Three Kings Monument?', a: 'Yes. Use the suggested route below and adapt it to weather, mobility and the time available.' },
+];
+const schema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Three Kings Monument', item: `${siteConfig.domain}/en/` },
+  { '@type': 'ListItem', position: 2, name: 'Explore', item: `${siteConfig.domain}/en/explore/` },
+  { '@type': 'ListItem', position: 3, name: item.name, item: Astro.url.href },
+]};
+---
+<BaseLayout lang="en" title={`${item.name} | Three Kings Monument Chiang Mai Guide`} description={`${item.summary} Practical route, context, photography advice and destination map.`} faqs={faq} alternateLocales={['en']}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}/>
+  <Header lang="en" messages={messages}/>
+  <main class="text-slate-800">
+    <div class="bg-amber-950 text-white pt-28 pb-16 px-5">
+      <div class="max-w-5xl mx-auto">
+        <nav class="text-sm text-amber-200 mb-7"><a href="/en/" class="underline">Three Kings Monument</a> / <a href="/en/explore/" class="underline">Explore</a></nav>
+        <span class="uppercase tracking-widest text-amber-300 text-sm">{item.kind === 'place' ? 'Nearby attraction' : 'Visitor guide'}</span>
+        <h1 class="text-4xl md:text-5xl font-bold mt-3 mb-6">{item.name}</h1>
+        <p class="text-xl leading-8 max-w-3xl">{item.summary}</p>
+        <div class="flex flex-wrap gap-3 mt-7"><a href={maps} target="_blank" rel="noopener noreferrer" class="bg-amber-400 text-amber-950 rounded-lg px-5 py-3 font-semibold">View location on Google Maps ↗</a><a href="/en/explore/" class="border border-amber-200 rounded-lg px-5 py-3">Browse all guides</a></div>
+      </div>
+    </div>
+    <article class="max-w-5xl mx-auto px-5 py-12 space-y-10 leading-8">
+      <section><h2 class="text-2xl font-bold mb-3">Discover {item.name}</h2><p>{item.focus}</p>
+        {availableImage && <figure class="mt-6"><img src={image} alt={item.kind === 'place' ? `${item.name}, Chiang Mai — location-specific photograph` : 'Three Kings Monument in Chiang Mai'} loading="lazy" class="w-full max-h-[470px] object-cover rounded-xl"/><figcaption class="text-sm text-slate-500 mt-2">{item.kind === 'place' ? `${item.name} — photograph of the named attraction` : 'Three Kings Monument — starting point for this guide'} {photoSource && <a class="underline" href={photoSource} target="_blank" rel="noopener noreferrer">Photo source</a>}</figcaption></figure>}
+      </section>
+      <section class="bg-amber-50 rounded-2xl p-7"><h2 class="text-2xl font-bold mb-3">About {item.name}: management and heritage</h2><p>{details?.management ?? 'This is a self-guided editorial itinerary around the Three Kings Monument, rather than a separately managed attraction. Individual museums, temples and markets along the route are managed by their own organizations; check each venue’s notices.'}</p><p class="mt-3">{details?.history ?? `The route begins with the civic monument to Mangrai, Ramkhamhaeng and Ngam Muang. It connects the city’s founding memory with its later public spaces, museums and living religious traditions. ${item.focus}`}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">Basic visitor information</h2><dl class="grid sm:grid-cols-2 gap-3"><div class="border rounded-lg p-4"><dt class="font-semibold">Area</dt><dd>Chiang Mai, Thailand</dd></div><div class="border rounded-lg p-4"><dt class="font-semibold">Visit type</dt><dd>{item.kind === 'place' ? 'Cultural sight or local attraction' : 'Self-guided travel planning'}</dd></div><div class="border rounded-lg p-4"><dt class="font-semibold">Opening hours</dt><dd>{item.slug === 'chiang-mai-historical-centre' ? 'Partial-renovation closure announced by municipal centre; verify reopening' : item.kind === 'place' ? 'Confirm directly with venue or on-site notice' : 'Follow access hours of each stop'}</dd></div><div class="border rounded-lg p-4"><dt class="font-semibold">Tickets</dt><dd>{item.kind === 'place' ? 'Check current entry policy for this specific site' : 'Any individual attraction fees are separate'}</dd></div></dl></section>
+      <section><h2 class="text-2xl font-bold mb-3">History, architecture and observation points</h2><h3 class="font-bold text-xl mb-2">Historical background</h3><p>{details?.history ?? item.focus}</p><h3 class="font-bold text-xl mt-5 mb-2">Architecture and distinctive features</h3><p>{details?.architecture ?? `This itinerary links the broad civic square, the Old City street grid and nearby architecture. ${item.focus}`}</p><h3 class="font-bold text-xl mt-5 mb-2">What to observe on site</h3><p>{item.focus}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">Suggested walking route</h2><ol class="list-decimal ml-6 space-y-3"><li>Start at the Three Kings Monument and orient yourself within the Old City.</li><li>{item.route}</li><li>Finish with a rest or food stop, allowing extra time for weather and local access conditions.</li></ol></section>
+      <section><h2 class="text-2xl font-bold mb-3">Before you visit</h2><p>{item.visit}</p><p class="mt-3">In hot weather carry drinking water and sun protection. During the rainy season allow flexibility. Use marked crossings and respect temple customs, museum signs and local ceremonies.</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">Photography viewpoints</h2><p>{item.photo}</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">Food and accommodation</h2><p>Central Chiang Mai has cafes, food stalls and accommodation in and around the Old City. Compare locations against your chosen route and transport needs; availability and prices depend on the date. For a short visit, staying near the moat or a convenient Old City entrance can reduce extra transfers.</p></section>
+      <section><h2 class="text-2xl font-bold mb-3">Getting there and navigation</h2><p>{details?.transport ?? (item.kind === 'place' ? `Search for “${item.name}, Chiang Mai, Thailand” and check the exact listing before travel.` : 'Navigate first to the Three Kings Monument, then follow the suggested sequence on foot or with local transport.')}</p><p class="mt-3">For driving, check local parking options and traffic restrictions. For public transport, choose a safe drop-off and complete the final Old City section on foot.</p><a class="inline-block mt-3 text-amber-800 underline font-bold" href={maps} rel="noopener noreferrer" target="_blank">Open {item.name} on Google Maps ↗</a></section>
+      <section><h2 class="text-2xl font-bold mb-4">Frequently asked questions</h2>{faq.map(f => <details class="border rounded-lg p-4 mb-3"><summary class="font-semibold cursor-pointer">{f.q}</summary><p class="mt-3">{f.a}</p></details>)}</section>
+      <section><h2 class="text-2xl font-bold mb-4">Continue exploring nearby</h2><ul class="grid md:grid-cols-2 gap-4">{nearby.map(p => <li class="border rounded-xl p-5"><a class="font-bold text-amber-800 underline" href={`/en/explore/${p.slug}/`}>{p.name}</a><p class="text-sm mt-2">{p.summary}</p></li>)}</ul></section>
+      <section class="text-sm text-slate-600 border-t pt-5"><h2 class="font-bold text-base mb-2">Sources and updates</h2><p>Background reading: <a class="underline" href="https://www.tourismthailand.org/Articles/self-driving-chiang-mai">Tourism Authority of Thailand</a>, <a class="underline" href="https://www.chiangmai.go.th/english/index.php/welcome/tourism">Chiang Mai Province tourism portal</a>. For local opening and admission conditions, confirm with the attraction directly. Guide prepared November 2026.</p></section>
+    </article>
+  </main>
+  <Footer lang="en" messages={messages}/>
+</BaseLayout>

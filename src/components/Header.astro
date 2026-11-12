@@ -27,6 +27,8 @@ const navItems = [
 ];
 
 const switchTo = (target: Lang) => `/${target}/`;
+const homePath = `/${lang}/`;
+const isHome = Astro.url.pathname === homePath;
 ---
 
 <header class="fixed top-0 inset-x-0 z-50 bg-teak/90 backdrop-blur-md border-b border-gold/20">
@@ -37,7 +39,7 @@ const switchTo = (target: Lang) => `/${target}/`;
 
     <nav class="no-scrollbar hidden lg:flex flex-1 items-center gap-5 overflow-x-auto text-xs xl:text-sm text-ivory/80">
       {navItems.map((item) => (
-        <a href={item.href} class="whitespace-nowrap hover:text-goldBright transition-colors">
+        <a href={isHome ? item.href : `${homePath}${item.href}`} class="whitespace-nowrap hover:text-goldBright transition-colors">
           {item.label}
         </a>
       ))}
@@ -67,7 +69,7 @@ const switchTo = (target: Lang) => `/${target}/`;
   <nav id="mobile-menu" class="hidden lg:hidden border-t border-gold/20 bg-teakDeep max-h-[70vh] overflow-y-auto">
     <div class="max-w-7xl mx-auto px-5 py-3 grid grid-cols-2 gap-2 text-sm text-ivory/80">
       {navItems.map((item) => (
-        <a href={item.href} class="py-1.5 hover:text-goldBright transition-colors">{item.label}</a>
+        <a href={isHome ? item.href : `${homePath}${item.href}`} class="py-1.5 hover:text-goldBright transition-colors">{item.label}</a>
       ))}
     </div>
   </nav>

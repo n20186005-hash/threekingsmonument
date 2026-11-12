@@ -23,6 +23,7 @@ import Reviews from '../../components/Reviews.astro';
 import MapSection from '../../components/MapSection.astro';
 import SourcesSection from '../../components/SourcesSection.astro';
 import Footer from '../../components/Footer.astro';
+import { expansion } from '../../data/expansion';
 
 const requested = Astro.params.lang;
 if (!requested || !languagesList.includes(requested as Lang)) {
@@ -32,6 +33,17 @@ if (!requested || !languagesList.includes(requested as Lang)) {
 const { lang, messages } = await getI18n(Astro.url);
 // English-only deep-dive sub-pages (history / visiting-guide / nearby-attractions).
 const topics = lang === 'en' ? (messages as any).topics : null;
+const nearbyHeading = {th:'เที่ยวชมสถานที่ใกล้อนุสาวรีย์สามกษัตริย์',en:'Explore nearby Chiang Mai attractions',zh:'探索三王纪念碑周边景点'}[lang];
+const nearbyIntro = {th:'พิพิธภัณฑ์ วัด และสถานที่สำคัญในเมืองเก่า พร้อมข้อมูลการเดินทางเฉพาะแห่ง',en:'Museums, temples and historic places around the Old City, each with its own route and map.',zh:'精选古城博物馆、寺庙与历史景点，查看独立游览路线和地图。'}[lang];
+const nearbyLabels: Record<string, [string,string,string]> = {
+  'chiang-mai-city-arts-cultural-centre':['หอศิลปวัฒนธรรมเมืองเชียงใหม่','Chiang Mai City Arts & Cultural Centre','清迈城市艺术文化中心'],
+  'lanna-folklife-museum':['หอพื้นถิ่นล้านนา','Lanna Folklife Museum','兰纳民俗博物馆'],
+  'wat-chedi-luang':['วัดเจดีย์หลวง','Wat Chedi Luang','契迪龙寺'],
+  'wat-phra-singh':['วัดพระสิงห์','Wat Phra Singh','帕辛寺'],
+  'tha-phae-gate':['ประตูท่าแพ','Tha Phae Gate','塔佩门'],
+  'wat-chiang-man':['วัดเชียงมั่น','Wat Chiang Man','清曼寺'],
+};
+const nearbyPicks = expansion.filter(item => item.slug in nearbyLabels);
 
 // One snapshot per request, shared by the hero strip and the forecast section.
 const weather = await getWeather();
@@ -71,10 +83,28 @@ const weather = await getWeather();
             <li>
               <a href="/en/nearby-attractions/"><strong>{topics.nearbyAttractions.h1}</strong><span>{topics.nearbyAttractions.intro}</span></a>
             </li>
+            <li>
+              <a href="/en/explore/"><strong>Explore 32 Old City guides</strong><span>Nearby museums, temples, markets, heritage walks and practical visitor plans.</span></a>
+            </li>
           </ul>
         </div>
       </section>
     )}
+    <section class="guides-band" aria-labelledby="nearby-heading">
+      <div class="guides-inner">
+        <h2 id="nearby-heading">{nearbyHeading}</h2>
+        <p class="mb-6 text-slate-600">{nearbyIntro}</p>
+        <ul class="guides-grid">
+          {nearbyPicks.map(item => <li>
+            <a href={`/en/explore/${item.slug}/`} hreflang="en">
+              <strong>{nearbyLabels[item.slug][lang === 'th' ? 0 : lang === 'zh' ? 2 : 1]}</strong>
+              <span>{lang === 'en' ? item.summary : lang === 'th' ? 'ดูข้อมูลสถานที่ เส้นทาง และแผนที่ (ภาษาอังกฤษ)' : '查看景点历史、路线及地图（英文页面）'}</span>
+            </a>
+          </li>)}
+        </ul>
+        <p class="mt-5"><a class="underline text-amber-800 font-semibold" href="/en/explore/">{lang === 'th' ? 'ดูคู่มือทั้งหมด 32 เรื่อง (ภาษาอังกฤษ)' : lang === 'zh' ? '查看全部 32 篇攻略（英文）' : 'View all 32 guides →'}</a></p>
+      </div>
+    </section>
     <Facilities messages={messages} />
     <Food messages={messages} />
     <Responsibility messages={messages} />

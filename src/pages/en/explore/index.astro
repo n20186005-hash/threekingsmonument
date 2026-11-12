@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getI18n } from '../../../i18n/ui';
+import { expansion } from '../../../data/expansion';
+export const prerender = true;
+const { messages } = await getI18n(Astro.url);
+---
+<BaseLayout lang="en" title="Explore Chiang Mai Old City | 32 Heritage & Travel Guides" description="Thirty-two place-specific and practical guides around Chiang Mai's Three Kings Monument." alternateLocales={['en']}>
+  <Header lang="en" messages={messages}/>
+  <main class="mx-auto max-w-6xl px-5 pt-28 pb-20 text-slate-800">
+    <nav class="text-sm mb-5"><a class="underline" href="/en/">Three Kings Monument</a> / Explore</nav>
+    <h1 class="text-4xl font-bold mb-5">Explore Chiang Mai Old City</h1>
+    <p class="max-w-3xl leading-8 mb-12">Start at the Three Kings Monument and discover nearby museums, temples, markets and practical routes. These English-language guides have individual map destinations and visit-planning advice. Check current hours and access rules with each venue.</p>
+    {(['place','guide'] as const).map(kind => <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">{kind === 'place' ? 'Nearby places' : 'Planning and history guides'}</h2>
+      <ul class="grid gap-4 md:grid-cols-3">
+        {expansion.filter(item => item.kind === kind).map(item => <li class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <a class="font-bold text-amber-800 underline" href={`/en/explore/${item.slug}/`}>{item.name}</a>
+          <p class="text-sm mt-3 leading-6">{item.summary}</p>
+        </li>)}
+      </ul>
+    </section>)}
+  </main>
+  <Footer lang="en" messages={messages}/>
+</BaseLayout>

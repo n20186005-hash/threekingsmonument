@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { siteConfig } from '../config';
+import { expansion } from '../data/expansion';
 
 const base = siteConfig.domain;
 const langs = ['th', 'en', 'zh'] as const;
@@ -14,7 +15,7 @@ const home: { loc: string; alts: { hreflang: string; href: string }[] }[] = lang
 }));
 
 // English-only deep-dive pages (translations pending).
-const subpages = ['history', 'visiting-guide', 'nearby-attractions'].map((slug) => ({
+const subpages = ['history', 'visiting-guide', 'nearby-attractions', 'explore', ...expansion.map(p => `explore/${p.slug}`)].map((slug) => ({
   loc: `${base}/en/${slug}/`,
   alts: [
     { hreflang: 'en', href: `${base}/en/${slug}/` },
