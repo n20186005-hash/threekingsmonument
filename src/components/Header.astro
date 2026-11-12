@@ -26,6 +26,9 @@ const navItems = [
   { label: h.map, href: '#map' },
 ];
 
+const exploreLabel = { th: 'คู่มือ 32 เรื่อง', en: '32 Guides', zh: '32 篇专题' }[lang];
+const exploreHref = `/${lang}/explore/`;
+
 const switchTo = (target: Lang) => `/${target}/`;
 const homePath = `/${lang}/`;
 const isHome = Astro.url.pathname === homePath;
@@ -44,6 +47,8 @@ const isHome = Astro.url.pathname === homePath;
         </a>
       ))}
     </nav>
+
+    <a href={exploreHref} class="hidden sm:inline-flex shrink-0 items-center rounded-full border border-gold/60 bg-gold/15 px-3 py-1.5 text-xs font-semibold text-goldBright hover:bg-gold hover:text-teak transition-colors" aria-label={exploreLabel}>{exploreLabel}</a>
 
     <div class="flex items-center gap-2 ml-auto lg:ml-0">
       <div class="flex items-center rounded-full border border-gold/30 overflow-hidden text-xs">
@@ -68,6 +73,7 @@ const isHome = Astro.url.pathname === homePath;
 
   <nav id="mobile-menu" class="hidden lg:hidden border-t border-gold/20 bg-teakDeep max-h-[70vh] overflow-y-auto">
     <div class="max-w-7xl mx-auto px-5 py-3 grid grid-cols-2 gap-2 text-sm text-ivory/80">
+      <a href={exploreHref} class="col-span-2 rounded-lg border border-gold/40 bg-gold/10 px-3 py-2 font-semibold text-goldBright">{exploreLabel} →</a>
       {navItems.map((item) => (
         <a href={isHome ? item.href : `${homePath}${item.href}`} class="py-1.5 hover:text-goldBright transition-colors">{item.label}</a>
       ))}
