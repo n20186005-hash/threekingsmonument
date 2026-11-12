@@ -21,7 +21,6 @@ import Responsibility from '../../components/Responsibility.astro';
 import Gallery from '../../components/Gallery.astro';
 import Reviews from '../../components/Reviews.astro';
 import MapSection from '../../components/MapSection.astro';
-import SourcesSection from '../../components/SourcesSection.astro';
 import Footer from '../../components/Footer.astro';
 import { expansion } from '../../data/expansion';
 
@@ -120,7 +119,6 @@ const weather = await getWeather();
     <Gallery lang={lang} messages={messages} />
     <Reviews messages={messages} />
     <MapSection lang={lang} messages={messages} />
-    <SourcesSection lang={lang} messages={messages} />
   </main>
   <Footer lang={lang} messages={messages} />
 
