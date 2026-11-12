@@ -27,7 +27,7 @@ const imageLink: Record<Lang, string> = {
 <footer class="bg-teakDeep text-ivory py-8">
   <div class="max-w-7xl mx-auto px-5 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
     <div class="text-sm text-ivory/75 space-y-2 max-w-2xl">
-      <p>© 2026 {footer.brand.name} ·{rights[lang]}</p>
+      <p>© 2026 {footer.brand.name} ·{rights[lang]}{lang === 'zh' ? '' : '.'}</p>
       <p>{disclaimer[lang]}</p>
     </div>
     <nav aria-label={footer.sourcesTitle} class="flex flex-wrap gap-x-5 gap-y-2 text-sm md:justify-end md:text-right">
