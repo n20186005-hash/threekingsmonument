@@ -18,6 +18,7 @@ const about = messages.about;
         <p class="rounded-xl bg-gold/10 border-l-4 border-gold px-4 py-3 text-teak">{about.entityIntro}</p>
         <p>{about.paragraph1}</p>
         <p>{about.paragraph2}</p>
+        {messages.gallery.historicalNote && <p>{messages.gallery.historicalNote}</p>}
         <blockquote class="border-l-4 border-gold pl-5 italic text-teak font-display text-xl my-6">
           “{about.quote}”
           <footer class="text-sm not-italic text-ink/60 mt-2">— {about.quoteAuthor}</footer>
