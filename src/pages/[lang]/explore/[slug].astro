@@ -7,13 +7,15 @@ import { expansion } from '../../../data/expansion';
 import { thTranslations, zhTranslations } from '../../../data/translated';
 import { photoSources, otherPhotoSources } from '../../../data/photoSources';
 import { siteConfig } from '../../../config';
+import { placeAddresses, threeKingsMeetingPoint } from '../../../data/placeAddresses';
 export const prerender = true;
 export function getStaticPaths() { return ['th','zh'].flatMap(lang=>expansion.map(item=>({params:{lang,slug:item.slug},props:{item}}))); }
 const lang = Astro.params.lang as 'th'|'zh';
 const {item} = Astro.props;
 const {messages} = await getI18n(Astro.url);
 const t = (lang === 'th' ? thTranslations : zhTranslations)[item.slug];
-const mapUrl = item.kind === 'place' ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${item.name}, Chiang Mai, Thailand`)}` : siteConfig.mapsUrl;
+const address = item.kind === 'place' ? placeAddresses[item.slug] : threeKingsMeetingPoint;
+const mapUrl = item.kind === 'place' ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${item.name}, ${address}`)}` : siteConfig.mapsUrl;
 const imageFile = otherPhotoSources[item.slug]?.file ?? `${item.slug}.jpg`;
 const image = item.kind === 'place' ? `/explore/${imageFile}` : '/gallery/three-kings-monument-1.jpg';
 const imageSource = photoSources[item.slug] ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(photoSources[item.slug].replaceAll(' ', '_'))}` : otherPhotoSources[item.slug]?.source;
@@ -58,7 +60,7 @@ const faq = [{q:shared.faq1,a:shared.faqA1},{q:shared.faq2,a:shared.faqA2}];
         <figure class="mt-6"><img src={image} alt={t.name} loading="lazy" class="w-full max-h-[470px] object-cover rounded-xl"/><figcaption class="text-sm text-slate-500 mt-2">{t.name} {imageSource && <a href={imageSource} class="underline" target="_blank" rel="noopener noreferrer">{labels.photoSource}</a>}</figcaption></figure>
       </section>
       <section class="bg-amber-50 rounded-2xl p-7"><h2 class="text-2xl font-bold mb-3">{labels.management}</h2><p>{management}</p><p class="mt-3">{t.focus}</p></section>
-      <section><h2 class="text-2xl font-bold mb-4">{labels.info}</h2><dl class="grid sm:grid-cols-2 gap-3"><div class="border rounded-lg p-4"><dt class="font-bold">{labels.area}</dt><dd>{lang==='th'?'เมืองเชียงใหม่ ประเทศไทย':'泰国清迈'}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.type}</dt><dd>{item.kind==='place'?labels.place:labels.itinerary}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.hours}</dt><dd>{labels.check}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.tickets}</dt><dd>{shared.fee}</dd></div></dl></section>
+      <section><h2 class="text-2xl font-bold mb-4">{labels.info}</h2><dl class="grid sm:grid-cols-2 gap-3"><div class="border rounded-lg p-4"><dt class="font-bold">{item.kind === 'place' ? (lang === 'th' ? 'ที่อยู่ตามแผนที่' : '具体地址（Google 地图）') : (lang === 'th' ? 'จุดนัดพบเริ่มต้น: อนุสาวรีย์สามกษัตริย์' : '建议集合起点：三王纪念碑')}</dt><dd>{address}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.type}</dt><dd>{item.kind==='place'?labels.place:labels.itinerary}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.hours}</dt><dd>{labels.check}</dd></div><div class="border rounded-lg p-4"><dt class="font-bold">{labels.tickets}</dt><dd>{shared.fee}</dd></div></dl></section>
       <section><h2 class="text-2xl font-bold mb-3">{labels.history}</h2><p>{t.focus}</p><p class="mt-3">{shared.context}</p></section>
       <section><h2 class="text-2xl font-bold mb-3">{labels.route}</h2><ol class="list-decimal ml-6 space-y-3"><li>{lang==='th'?'เริ่มที่อนุสาวรีย์สามกษัตริย์และดูทิศทางเมืองเก่า':'从三王纪念碑出发，先熟悉古城方向。'}</li><li>{t.route}</li><li>{lang==='th'?'เผื่อเวลาพักและปรับตามสภาพอากาศ':'预留休息时间，并根据天气调整。'}</li></ol></section>
       <section><h2 class="text-2xl font-bold mb-3">{labels.tips}</h2><p>{t.tip}</p></section>
