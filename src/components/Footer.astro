@@ -1,5 +1,4 @@
 ---
-import { siteConfig } from '../config';
 import type { Lang } from '../i18n/ui';
 
 interface Props {
@@ -8,110 +7,35 @@ interface Props {
 }
 const { lang, messages } = Astro.props;
 const footer = messages.footer;
-const mapsUrl = siteConfig.mapsUrlFooter;
+const disclaimer: Record<Lang, string> = {
+  zh: '本网站是一个独立的旅游信息项目。我们与任何政府机构或官方组织均无关联。',
+  en: 'This is an independent tourism information project. We are not affiliated with any government agency or official organization.',
+  th: 'เว็บไซต์นี้เป็นโครงการข้อมูลการท่องเที่ยวอิสระ ไม่มีความเกี่ยวข้องกับหน่วยงานรัฐบาลหรือองค์กรทางการใด ๆ',
+};
+const rights: Record<Lang, string> = {
+  zh: '版權所有',
+  en: 'All rights reserved',
+  th: 'สงวนลิขสิทธิ์',
+};
+const imageLink: Record<Lang, string> = {
+  zh: '图片版权',
+  en: 'Image copyright',
+  th: 'ลิขสิทธิ์ภาพ',
+};
 ---
 
-<footer class="bg-teakDeep text-ivory pt-16 pb-8">
-  <div class="max-w-7xl mx-auto px-5">
-    <div class="grid md:grid-cols-3 gap-10">
-      <div>
-        <div class="font-display text-2xl text-goldBright">{footer.brand.name}</div>
-        <p class="font-hand text-gold text-lg mt-1">{footer.brand.tagline}</p>
-        <p class="mt-4 text-sm text-ivory/70 max-w-sm">{footer.about}</p>
-      </div>
-
-      <div>
-        <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.navTitle}</div>
-        <ul class="grid grid-cols-2 gap-2 text-sm">
-          {footer.navItems.map((n) => (
-            <li><a href={n.href} class="text-ivory/80 hover:text-goldBright transition-colors">{n.label}</a></li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.noteTitle}</div>
-        <p class="text-sm text-ivory/70">{footer.note}</p>
-        <a
-          href={mapsUrl}
-          target="_blank"
-          rel="noopener"
-          class="mt-5 inline-flex items-center gap-2 bg-gold text-teak font-semibold px-5 py-2.5 rounded-full hover:bg-goldBright transition-colors"
-        >
-          {footer.mapsLabel}
-        </a>
-      </div>
+<footer class="bg-teakDeep text-ivory py-8">
+  <div class="max-w-7xl mx-auto px-5 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+    <div class="text-sm text-ivory/75 space-y-2 max-w-2xl">
+      <p>© 2026 {footer.brand.name} · {rights[lang]}。</p>
+      <p>{disclaimer[lang]}</p>
     </div>
-
-    <!-- Transparency Info -->
-    {footer.transparency && (
-      <div class="mt-12 rounded-xl bg-teak/50 border border-gold/20 p-6 max-w-3xl">
-        <h4 class="font-display text-lg text-goldBright mb-2">{footer.transparencyTitle}</h4>
-        <p class="text-sm text-ivory/80 leading-relaxed">{footer.transparency}</p>
-      </div>
-    )}
-
-    <!-- Sources / References -->
-    <div class="mt-12 border-t border-ivory/10 pt-8">
-      <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.sourcesTitle}</div>
-      <p class="text-sm text-ivory/70 max-w-2xl mb-4">{footer.sourcesNote}</p>
-      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-sm">
-        {siteConfig.sources.map((s) => (
-          <li>
-            <a
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-goldBright hover:underline inline-flex items-center gap-1"
-            >
-              {s.name[lang]} <span class="text-ivory/40">↗</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      <!-- 评价来源同步说明 -->
-      <div class="mt-6 rounded-xl bg-teak/50 border border-gold/20 p-5 max-w-3xl">
-        <div class="text-xs uppercase tracking-wider text-gold mb-2">{footer.reviewSyncTag}</div>
-        <p class="text-sm text-ivory/80 leading-relaxed">{footer.reviewSyncNote}</p>
-        <a
-          href={mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 inline-flex items-center gap-1 text-sm text-goldBright hover:underline"
-        >
-          {footer.mapsLabel}
-        </a>
-      </div>
-
-      <div class="mt-8">
-        <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.citationsTitle}</div>
-        <p class="text-sm text-ivory/70 max-w-2xl mb-4">{footer.citationsNote}</p>
-        <ul class="space-y-3 text-sm">
-          {footer.citations.map((c) => (
-            <li class="border-l-2 border-gold/40 pl-3">
-              <div class="font-medium text-ivory">{c.title}</div>
-              <div class="text-ivory/60">{c.meta}</div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-
-    <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs">
-      <a href={`/${lang}/privacy-policy`} class="text-ivory/60 hover:text-goldBright underline-offset-2 hover:underline">{footer.privacy}</a>
-      <a href={`/${lang}/terms-of-service`} class="text-ivory/60 hover:text-goldBright underline-offset-2 hover:underline">{footer.terms}</a>
-      <a href={`/${lang}/cookie-settings`} class="text-ivory/60 hover:text-goldBright underline-offset-2 hover:underline">{footer.cookies}</a>
-    </div>
-
-    <div class="ornament my-10 opacity-60"></div>
-
-    <div class="text-xs text-ivory/50 leading-relaxed space-y-2">
-      <p>{footer.disclaimerLead}</p>
-      <p class="text-ivory/70">{footer.unofficial}</p>
-      <p>{footer.dataSource}</p>
-      <p>{footer.imageCopyright}</p>
-      <p class="pt-2 text-ivory/40">{footer.copyright}</p>
-    </div>
+    <nav aria-label={footer.sourcesTitle} class="flex flex-wrap gap-x-5 gap-y-2 text-sm md:justify-end md:text-right">
+      <a href={`/${lang}/#sources`} class="text-ivory/75 hover:text-goldBright hover:underline">{footer.sourcesTitle}</a>
+      <a href={`/${lang}/#image-rights`} class="text-ivory/75 hover:text-goldBright hover:underline">{imageLink[lang]}</a>
+      <a href={`/${lang}/privacy-policy/`} class="text-ivory/75 hover:text-goldBright hover:underline">{footer.privacy}</a>
+      <a href={`/${lang}/terms-of-service/`} class="text-ivory/75 hover:text-goldBright hover:underline">{footer.terms}</a>
+      <a href={`/${lang}/cookie-settings/`} class="text-ivory/75 hover:text-goldBright hover:underline">{footer.cookies}</a>
+    </nav>
   </div>
 </footer>
