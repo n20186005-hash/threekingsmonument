@@ -26,7 +26,11 @@ const translatedSubpages = ['th','zh'].flatMap(lang => ['explore', ...expansion.
   loc:`${base}/${lang}/${slug}/`,
   alts:[...langs.map(l=>({hreflang:l,href:`${base}/${l}/${slug}/`})),{hreflang:'x-default',href:`${base}/en/${slug}/`}],
 })));
-const urls = [...home, ...subpages, ...translatedSubpages];
+const infoPages = langs.flatMap(lang => ['sources', 'editorial-policy'].map(slug => ({
+  loc: `${base}/${lang}/${slug}/`,
+  alts: [...langs.map(l => ({ hreflang: l, href: `${base}/${l}/${slug}/` })), { hreflang: 'x-default', href: `${base}/en/${slug}/` }],
+})));
+const urls = [...home, ...subpages, ...translatedSubpages, ...infoPages];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
