@@ -126,9 +126,9 @@ export const siteConfig = {
   // shown for context only; for the always-current count, visitors should open
   // the Google Maps listing via the link on the page.
   rating: '4.3',
-  reviewCount: '9,066',
+  reviewCount: '9,112',
   // 同步月份（用于评分与评价数的来源说明）
-  reviewSync: '2026-10',
+  reviewSync: '2026-11',
 
   category: {
     th: 'อนุสาวรีย์',
@@ -193,9 +193,9 @@ export const siteConfig = {
         zh: 'Google Maps — 已核实位置与用户评价',
       },
       note: {
-        th: 'ตำแหน่งและรีวิว · ซิงก์กันยายน 2026',
-        en: 'Location & visitor reviews · synced September 2026',
-        zh: '位置与用户评价 · 同步时间 2026 年 9 月',
+        th: 'ตำแหน่งและรีวิว · ซิงก์พฤศจิกายน 2026',
+        en: 'Location & visitor reviews · synced November 2026',
+        zh: '位置与用户评价 · 同步时间 2026 年 11 月',
       },
       url: 'https://maps.app.goo.gl/5BGjMqx9Y8KDnVYFA',
     },
